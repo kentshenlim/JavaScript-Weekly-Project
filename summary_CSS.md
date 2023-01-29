@@ -1,5 +1,5 @@
 # Summary CSS (and HTML)
 
-## Good Practice
+## Techniques
 
 ### 20230123_Stopwatch
