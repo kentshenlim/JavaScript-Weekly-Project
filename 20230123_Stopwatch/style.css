@@ -7,7 +7,7 @@ ul {
 
 * {
     box-sizing: border-box;
-    color: var(--WHITE)
+    color: var(--WHITE);
 }
 
 :root {
@@ -21,6 +21,9 @@ body {
     width: 100vw;
     height: 100vh;
     background-color: var(--YELLOW);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .center {
@@ -33,7 +36,7 @@ body {
 
 .flex-container {
     display: flex;
-    width: 80%; /* Of parent, which is the body */
+    width: 70%; /* Of parent, which is the body */
     margin: 0 auto; /* Centralize self */
     justify-content: space-around;
 }
@@ -42,13 +45,19 @@ body {
     list-style: none;
     padding: 0;
     margin: 0;
-    width: 25%;
+    width: max(30%, 50px);
     text-align: center; /* Centralize button in li box */
 }
 
 .flex-container li button {
     background: var(--TRANSPARENT);
-    border: solid var(--WHITE) 3px;
-    padding: 1rem;
-    
+    border: solid var(--WHITE) 1px;
+    border-radius: 3px;
+    padding: 0.5rem;
+    width: 100%; /* Fill whole of li box*/
+}
+
+div.outermost {
+    height: 80%;
+    width: 100%;
 }
