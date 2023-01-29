@@ -33,17 +33,22 @@ body {
 
 .flex-container {
     display: flex;
-
+    width: 80%; /* Of parent, which is the body */
+    margin: 0 auto; /* Centralize self */
+    justify-content: space-around;
 }
 
 .flex-container li {
     list-style: none;
     padding: 0;
     margin: 0;
+    width: 25%;
+    text-align: center; /* Centralize button in li box */
 }
 
 .flex-container li button {
     background: var(--TRANSPARENT);
     border: solid var(--WHITE) 3px;
+    padding: 1rem;
     
 }
