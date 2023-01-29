@@ -11,7 +11,18 @@ window.onload = function () {
 
   startBtn.addEventListener('click', () => {
     clearInterval(Interval);
-    setInterval(startCounting, 10); // Implement startCounting every 10 ms
+    Interval = setInterval(startCounting, 10); // Implement startCounting every 10 ms
+  });
+
+  stopBtn.addEventListener('click', () => {
+    clearInterval(Interval); // Reset the setInterval timer and stop
+  });
+
+  resetBtn.addEventListener('click', () => {
+    clearInterval(Interval);
+    [msec, sec] = [0, 0];
+    msecDisp.textContent = '00';
+    secDisp.textContent = '00';
   });
 
   function startCounting() {
