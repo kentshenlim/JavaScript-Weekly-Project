@@ -8,7 +8,7 @@
 }
 
 :root {
-    --YELLOW: #fea600;
+    --YELLOW: #fea600; /* Collect some pre-defined constants*/
 }
 
 body {
