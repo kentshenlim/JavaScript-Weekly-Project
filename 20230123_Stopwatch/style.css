@@ -26,6 +26,11 @@ body {
     align-items: center;
 }
 
+div.outermost { /* For vertical centering */
+    height: 80%;
+    width: 100%;
+}
+
 .center {
     text-align: center;
 }
@@ -47,6 +52,7 @@ body {
     margin: 0;
     width: max(30%, 50px);
     text-align: center; /* Centralize button in li box */
+    border-radius: 3px;
 }
 
 .flex-container li button {
@@ -57,7 +63,9 @@ body {
     width: 100%; /* Fill whole of li box*/
 }
 
-div.outermost {
-    height: 80%;
-    width: 100%;
+button:hover,
+li:hover {
+    background-color: var(--WHITE);
+    color: var(--YELLOW);
+    transition-duration: 700ms;
 }
