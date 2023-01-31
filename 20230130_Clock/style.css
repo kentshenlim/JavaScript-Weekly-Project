@@ -1,0 +1,26 @@
+* {
+    --BLACK: #000000;
+    --BLUE: #17d4fe;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--BLACK);
+}
+
+.display {
+    color: var(--BLUE);
+}
+
+
