@@ -1,3 +1,8 @@
+@font-face {
+    font-family: "digital-font";
+    src: url("font/digital-7.ttf");
+}
+
 * {
     --BLACK: #000000;
     --BLUE: #17d4fe;
@@ -21,6 +26,7 @@ body {
 
 .display {
     color: var(--BLUE);
+    font-size: 5rem;
+    letter-spacing: 0.15rem;
+    font-family: "digital-font";
 }
-
-
