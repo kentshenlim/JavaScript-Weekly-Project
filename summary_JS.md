@@ -25,3 +25,23 @@
       call `clearInterval(ID)`, the timer internal to the `setInterval()` will
       be reset to 0. You then need to call the `setInterval` again to repeat the
       func execution.
+
+### 20230130_Clock
+
+1. `setTimeout(function, interval)` recursive call
+   - When is this useful against `setInterval`? Best illustrated by comparing
+     stopwatch and timer.
+   - Invoking `setInterval` will start the timer, then execute the function
+     every time after the timer reaches that interval.
+   - `setInterval` is fine for stopwatch, because you want to add one only
+     after that 0.01 s (the interval set).
+   - `setInterval` however, is less ideal for timer. This is because the
+     function will execute for the first time only when that interval set is
+     reached. If the interval is 1s, this means you will stuck with your
+     original time in HTML for 1s (if any, if nothing then it will appear blank
+     for 1s), but what we want is instant update, as soon as the HTML loads.
+   - By having the `setTimeout` in the body (at the end) of an updateDisplay
+     function, and then outside the function invoking the function once, when
+     the HTML loads, the function will be invoked immediately once, giving
+     immediate time. After the interval in `setTimeout` reaches, that function
+     will be called recursively again.

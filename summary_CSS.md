@@ -22,3 +22,18 @@
    - Include specification on all similar properties, e.g.
      `-moz-border-radius`, `-webkit-border-radius`, `border-radius`,
      `-khtml-border-radius`. This can be done conveniently with mixins in SCSS.
+
+### 20230130_Clock
+
+1. Vertical centering
+   - Without using flexbox
+   - Use absolute position, then that item will be referenced WRT its parent:
+     `{position: absolute; top: 50%; left: 50%; transform: translateX(-50%) translateY(-50%)}`
+   - When you `left: 50%; right: 50%;`, you move the upper left corner of your
+     element to center of its element (which is not you want). Note the % here
+     are WRT parent box dimension.
+   - When you `transform: translateX(-50%) translateY(-50%)`, you move that
+     element to left 50% of its own width, then upwards 50% of its own height.
+     Note the % here are WRT moving element.
+   - Complexity because the "reference point/ pivot" of an element is not always
+     its center.
