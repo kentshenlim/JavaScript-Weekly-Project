@@ -8,16 +8,26 @@ window.onload = () => {
 
   function updateTime() {
     const date = new Date();
-    const [minute, second] = [
-      date.getMinutes(),
-      date.getSeconds(),
+    let [hour, minute, second] = [
+      String(date.getHours()),
+      String(date.getMinutes()),
+      String(date.getSeconds()),
     ];
-    let hour = date.getHours();
     const meridiam = ((hour < 12) ? 'AM' : 'PM');
-    if (hour > 12) hour -= 12;
+    if (+hour > 12) hour = String(hour - 12);
+    // Fix length
+    hour = fixLength(hour);
+    minute = fixLength(minute);
+    second = fixLength(second);
+    // Update display
     hourDisp.textContent = hour;
     minuteDisp.textContent = minute;
     secondDisp.textContent = second;
     meridiamDisp.textContent = meridiam;
+  }
+
+  function fixLength(s) {
+    if (s.length === 1) return `0${s}`;
+    return s;
   }
 };
