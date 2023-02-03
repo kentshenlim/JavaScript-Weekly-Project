@@ -29,3 +29,7 @@ Coding](https://mikkegoes.com/javascript-projects-for-beginners/).
   updating the time every second.
 - For difference between `setInterval` and `setTimeout` in this application, see
   the JS summary for this week.
+
+### Answer reference
+
+- [Aaron Farrar](https://codepen.io/afarrar/pen/JRaEjP)
