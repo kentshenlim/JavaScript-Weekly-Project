@@ -14,6 +14,7 @@ window.onload = () => {
       String(date.getSeconds()),
     ];
     const meridiam = ((hour < 12) ? 'AM' : 'PM');
+    if (hour === 0) hour = 12;
     if (+hour > 12) hour = String(hour - 12);
     // Fix length
     hour = fixLength(hour);
