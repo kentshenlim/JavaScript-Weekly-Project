@@ -34,6 +34,7 @@
      are WRT parent box dimension.
    - When you `transform: translateX(-50%) translateY(-50%)`, you move that
      element to left 50% of its own width, then upwards 50% of its own height.
-     Note the % here are WRT moving element.
+     With this, you correct the position of the element. Note the % here are WRT
+     moving element.
    - Complexity because the "reference point/ pivot" of an element is not always
      its center.
