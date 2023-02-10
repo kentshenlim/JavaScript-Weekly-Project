@@ -23,6 +23,8 @@ Coding](https://mikkegoes.com/javascript-projects-for-beginners/).
 
 ## 20230130_Clock
 
+### Overview
+
 - Involve the `Date` JS object to get time.
 - Use `setTimeout(func, 1000)` in the function body, then call the function
   once. In this way, the function will recursively call itself every second,

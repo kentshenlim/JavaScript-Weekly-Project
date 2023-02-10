@@ -9,6 +9,10 @@
       completely loaded."
     - Basically, put all variable initialization and function declaration as a
       function body of the function at RHS.
+    - The `windows.onload` is used to wait for the rest of the page to load,
+      then only the script.js (or anything enclosed by the `windows.onload`)
+      will be executed. This is however redundant with the usage of `defer`
+      keyword.
 2.  `setInterval(function, interval)`
     - The function will be executed repeatedly, with interval = interval between
       two successive executions.
@@ -16,6 +20,8 @@
     - "Returns an interval ID which uniquely identifies the interval, so you can
       remove it later by calling `clearInterval(ID)`."
     - Typical call `Interval = setInterval(repeatMe, 10)`
+    - Note the first execution is after the interval, but not just after the
+      line has been executed.
 3.  `setTimeout(function, interval)`
     - "Execute a function, after waiting a specified number of ms."
 4.  `clearInterval(ID)`
@@ -32,7 +38,9 @@
    - When is this useful against `setInterval`? Best illustrated by comparing
      stopwatch and timer.
    - Invoking `setInterval` will start the timer, then execute the function
-     every time after the timer reaches that interval.
+     every time after the timer reaches that interval. The execution is not
+     immediate, meaning at least one interval must have finished to get the
+     first execution.
    - `setInterval` is fine for stopwatch, because you want to add one only
      after that 0.01 s (the interval set).
    - `setInterval` however, is less ideal for timer. This is because the
