@@ -7,6 +7,10 @@
   --blue-border-color: #3079ed;
   --panel-side-length: 40%; /* Side length of calculator panel WRT window width */
   --padding-size: 1.5rem; /* Padding of buttons with containers*/
+  --gray-hover-background-color: #f1f1f1;
+  --blue-hover-background-color: #307cf9;
+  --gray-hover-border-color: #bbb;
+  --blue-hover-border-color: #1857bb;
 }
 
 body {
@@ -54,6 +58,7 @@ div.panel > * {
 
 div.first-row {
   height: 20%;
+  padding-bottom: 0; /* No need double spacing between display and buttons */
 }
 
 div.second-row {
@@ -111,3 +116,20 @@ button {
 }
 
 /* Hover effect ------------------------------------------------------------- */
+button:hover:not(.operator) {
+  /* Except operator button */
+  border-color: var(--gray-hover-border-color);
+  background-color: var(--gray-hover-background-color);
+}
+
+.big-button:hover {
+  /* Need important, as will be overwritten by the above */
+  border-color: var(--blue-hover-border-color) !important;
+  background-color: var(--blue-hover-background-color) !important;
+}
+
+button {
+  -webkit-transition: all 50ms ease-in-out;
+  -moz-transition: all 50ms ease-in-out;
+  transition: all 50ms ease-in-out;
+}
