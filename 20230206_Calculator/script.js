@@ -23,8 +23,7 @@ function evaluate(n1, n2, op) {
   }
 }
 
-function infixToPostfix(s) {
-  const list = s.split(' ');
+function infixToPostfix(list) {
   const outputList = [];
   const opStack = [];
   for (const item of list) {
@@ -38,11 +37,10 @@ function infixToPostfix(s) {
     }
   }
   while (opStack.length) outputList.push(opStack.pop());
-  return outputList.join(' ');
+  return outputList;
 }
 
-function postfixToAnswer(s) {
-  const list = s.split(' ');
+function postfixToAnswer(list) {
   const stack = [];
   for (const item of list) {
     if (isNumber(item)) stack.push(item);
