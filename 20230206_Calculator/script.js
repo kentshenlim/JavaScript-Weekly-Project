@@ -1,3 +1,4 @@
+/* Backend functions */
 const priority = {
   '+': 0,
   '-': 0,
@@ -46,11 +47,45 @@ function postfixToAnswer(s) {
   for (const item of list) {
     if (isNumber(item)) stack.push(item);
     else {
-      const n2 = stack.pop();
-      const n1 = stack.pop();
+      const n2 = +stack.pop();
+      const n1 = +stack.pop();
       const ans = evaluate(n1, n2, item);
-      stack.push(ans);
+      stack.push(String(ans));
     }
   }
   return ((stack.length === 1) ? stack[0] : NaN);
 }
+
+/* Frontend functions */
+const string = '';
+let digitString = '';
+let displayString = '';
+const buttonMapper = {
+  0: '0',
+  1: '1',
+  2: '2',
+  3: '3',
+  4: '4',
+  5: '5',
+  6: '6',
+  7: '7',
+  8: '8',
+  9: '9',
+  period: '.',
+  plus: '+',
+  minus: '-',
+  times: '*',
+  divide: '/',
+};
+const isNextClear = false;
+const digits = document.querySelectorAll('.digit');
+const operators = document.querySelectorAll('.operator');
+
+digits.forEach((btn) => {
+  btn.addEventListener('click', (e) => {
+    if (isNextClear) { // After pressing equal, then digit, will clear string
+      displayString = '';
+    }
+    digitString += buttonMapper[e.target.id];
+  });
+});
