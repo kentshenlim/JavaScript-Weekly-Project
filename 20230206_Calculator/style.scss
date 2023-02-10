@@ -3,6 +3,7 @@ $boundary-color: hsl(0deg 0% 94%);
 $gray: hsl(0deg 0% 87%);
 $blue: hsl(217deg 99% 65%);
 $panel-side-length: 40%; /* Side length of calculator panel WRT window width */
+$padding-size: 1.2rem; /* Padding of buttons with containers*/
 
 /* Mixin */
 @mixin transition {
@@ -30,5 +31,4 @@ body,
 body {
   width: max(100vw, 75ch);
   height: 100vh;
-  border: solid red 3px;
 }

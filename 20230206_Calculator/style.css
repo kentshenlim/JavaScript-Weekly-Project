@@ -1,6 +1,6 @@
 * {
   box-sizing: border-box;
-  --padding-glo: 1rem;
+  --padding-glo: 1.2rem;
 }
 
 body {
@@ -14,18 +14,21 @@ body,
   padding: 0;
 }
 
-.flex {
+.flex-column {
   display: flex;
+  flex-direction: column;
 }
 
-.flex-row {
-  flex-direction: row;
-  justify-content: space-between;
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
   gap: var(--padding-glo);
 }
 
-.flex-column {
-  flex-direction: column; /* Leave as default stretch for flexibility */
+.big-button {
+  grid-column: 4 / span 1;
+  grid-row: 2 / span 4;
 }
 
 div.panel {
@@ -40,7 +43,7 @@ div.panel {
 }
 
 div.panel > * {
-  /*  The three rows */
+  /*  The two rows */
   border: solid green 3px;
   margin: 0;
   padding: var(--padding-glo);
@@ -51,14 +54,9 @@ div.first-row {
 }
 
 div.second-row {
-  height: 16%;
-}
-
-div.third-row {
-  height: 64%;
+  height: 80%;
 }
 
 button {
   border: solid red 3px;
-  flex: 1 1 0;
 }
