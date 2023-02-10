@@ -55,9 +55,8 @@ function postfixToAnswer(list) {
 }
 
 /* Frontend functions */
+/* Some global variables */
 const tokenStore = [];
-let digitString = '';
-let displayString = '';
 const buttonMapper = {
   0: '0',
   1: '1',
@@ -75,16 +74,24 @@ const buttonMapper = {
   times: '*',
   divide: '/',
 };
+let digitString = '';
+let displayString = '';
 const isNextClear = false;
+
+/* Button effect */
+const displayText = document.getElementById('display');
+function updateDisplay(s) {
+  displayText.textContent = s;
+}
+
 const digits = document.querySelectorAll('.digit');
 const operators = document.querySelectorAll('.operator');
 
 digits.forEach((btn) => {
   btn.addEventListener('click', (e) => {
-    if (isNextClear) { // After pressing equal, then digit, will clear string
-      displayString = '';
-    }
     digitString += buttonMapper[e.target.id];
+    displayString += buttonMapper[e.target.id];
+    updateDisplay(displayString);
   });
 });
 
@@ -95,5 +102,7 @@ operators.forEach((btn) => {
     tokenStore.push(digitString); // Store this number
     digitString = ''; // Clear this number
     tokenStore.push(buttonMapper[e.target.id]);
+    displayString += buttonMapper[e.target.id];
+    updateDisplay(displayString);
   });
 });
