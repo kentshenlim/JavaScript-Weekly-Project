@@ -1,11 +1,11 @@
 * {
   box-sizing: border-box;
+  --padding-glo: 1rem;
 }
 
 body {
   width: 100vw;
   height: 100vh;
-  border: solid red 3px;
 }
 
 body,
@@ -14,8 +14,22 @@ body,
   padding: 0;
 }
 
+.flex {
+  display: flex;
+}
+
+.flex-row {
+  flex-direction: row;
+  justify-content: space-between;
+  gap: var(--padding-glo);
+}
+
+.flex-column {
+  flex-direction: column; /* Leave as default stretch for flexibility */
+}
+
 div.panel {
-  width: 35%;
+  width: max(35%, 75ch);
   aspect-ratio: 1 / 1;
   border: solid blue 3px;
   position: absolute;
@@ -25,22 +39,11 @@ div.panel {
   transform: translateX(-50%) translateY(-50%); /* Vertical centering */
 }
 
-.flex {
-  display: flex;
-}
-
-.flex-row {
-  flex-direction: row;
-}
-
-.flex-column {
-  flex-direction: column; /* Leave as default stretch for flexibility */
-}
-
 div.panel > * {
   /*  The three rows */
   border: solid green 3px;
   margin: 0;
+  padding: var(--padding-glo);
 }
 
 div.first-row {
@@ -53,4 +56,9 @@ div.second-row {
 
 div.third-row {
   height: 64%;
+}
+
+button {
+  border: solid red 3px;
+  flex: 1 1 0;
 }
