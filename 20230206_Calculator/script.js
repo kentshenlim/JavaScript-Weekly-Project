@@ -1,4 +1,4 @@
-/* Backend functions */
+/* Backend functions--------------------------------------------------------- */
 const priority = {
   '+': 0,
   '-': 0,
@@ -54,9 +54,9 @@ function postfixToAnswer(list) {
   return ((stack.length === 1) ? stack[0] : NaN);
 }
 
-/* Frontend functions */
+/* Frontend functions-------------------------------------------------------- */
 /* Some global variables */
-const tokenStore = [];
+let tokenStore = [];
 const buttonMapper = {
   0: '0',
   1: '1',
@@ -76,17 +76,16 @@ const buttonMapper = {
 };
 let digitString = '';
 let displayString = '';
-const isNextClear = false;
+let isNextClear = false;
 
-/* Button effect */
+/* Update display */
 const displayText = document.getElementById('display');
 function updateDisplay(s) {
   displayText.textContent = s;
 }
 
+/* Event for pressing digit btn */
 const digits = document.querySelectorAll('.digit');
-const operators = document.querySelectorAll('.operator');
-
 digits.forEach((btn) => {
   btn.addEventListener('click', (e) => {
     digitString += buttonMapper[e.target.id];
@@ -95,6 +94,8 @@ digits.forEach((btn) => {
   });
 });
 
+/* Event for pressing op btn */
+const operators = document.querySelectorAll('.operator');
 operators.forEach((btn) => {
   btn.addEventListener('click', (e) => {
     if (!digitString.length) return;
@@ -105,4 +106,20 @@ operators.forEach((btn) => {
     displayString += buttonMapper[e.target.id];
     updateDisplay(displayString);
   });
+});
+
+/* Event for pressing equal btn */
+const equal = document.getElementById('equal');
+equal.addEventListener('click', () => {
+  if (tokenStore.length > 1) { // Else do nothing
+    if (!digitString.length) displayString = 'NaN'; // Operator then equal
+    else {
+      tokenStore.push(digitString);
+      const ans = postfixToAnswer(infixToPostfix(tokenStore));
+      displayString = ans;
+      tokenStore = [ans]; // Can continue to push
+    }
+    isNextClear = true;
+    updateDisplay(displayString);
+  }
 });
