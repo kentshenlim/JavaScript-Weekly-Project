@@ -96,6 +96,7 @@ button {
   font-size: 2.5rem;
   letter-spacing: 0.5rem;
   text-align: end;
+  overflow-x: scroll;
 }
 
 .panel,
