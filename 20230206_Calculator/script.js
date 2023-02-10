@@ -7,7 +7,9 @@ const priority = {
 };
 
 function isNumber(s) {
-  return s[0] === '.' || (s[0] >= '0' && s[0] <= '9');
+  if (s[0] === '.' || (s[0] >= '0' && s[0] <= '9')) return true;
+  if (s.length > 1 && s[1] >= '0' && s[1] <= '9') return true;
+  return false;
 }
 
 function evaluate(n1, n2, op) {
@@ -129,4 +131,13 @@ equal.addEventListener('click', () => {
     isNextClear = true;
     updateDisplay(displayString);
   }
+});
+
+/* Event for pressing clear btn */
+const clear = document.getElementById('clear');
+clear.addEventListener('click', () => {
+  tokenStore = [];
+  digitString = '';
+  displayString = '';
+  updateDisplay(displayString);
 });
