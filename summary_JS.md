@@ -53,3 +53,10 @@
      the HTML loads, the function will be invoked immediately once, giving
      immediate time. After the interval in `setTimeout` reaches, that function
      will be called recursively again.
+
+### 20230206_Calculator
+
+1. Regex split string by a selection of char
+   - Say want to split a string into array by any of `+`, `-`, `*`, `/`
+   - s.split(/\+|\-|\*|\//g)
+   - `|` means or as usual
