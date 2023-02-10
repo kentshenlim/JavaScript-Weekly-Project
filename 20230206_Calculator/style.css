@@ -1,6 +1,12 @@
 * {
   box-sizing: border-box;
-  --padding-glo: 1.2rem;
+  /* Some variables, customize here */
+  --gray-background-color: #ddd;
+  --blue-background-color: hsl(217deg 99% 65%);
+  --gray-border-color: #e9e9e9;
+  --blue-border-color: #3079ed;
+  --panel-side-length: 40%; /* Side length of calculator panel WRT window width */
+  --padding-size: 1.5rem; /* Padding of buttons with containers*/
 }
 
 body {
@@ -14,6 +20,7 @@ body,
   padding: 0;
 }
 
+/* Layout ------------------------------------------------------------------- */
 .flex-column {
   display: flex;
   flex-direction: column;
@@ -23,10 +30,11 @@ body,
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(5, 1fr);
-  gap: var(--padding-glo);
+  gap: var(--padding-size);
 }
 
 .big-button {
+  /* The equal sign */
   grid-column: 4 / span 1;
   grid-row: 2 / span 4;
 }
@@ -34,19 +42,14 @@ body,
 div.panel {
   width: max(35%, 75ch);
   aspect-ratio: 1 / 1;
-  border: solid blue 3px;
   position: absolute;
-  top: 50%;
-  left: 50%;
   margin: 0 auto; /* Horizontal centering */
-  transform: translateX(-50%) translateY(-50%); /* Vertical centering */
 }
 
 div.panel > * {
   /*  The two rows */
-  border: solid green 3px;
   margin: 0;
-  padding: var(--padding-glo);
+  padding: var(--padding-size);
 }
 
 div.first-row {
@@ -57,6 +60,45 @@ div.second-row {
   height: 80%;
 }
 
-button {
-  border: solid red 3px;
+.display {
+  position: relative;
+  height: 100%;
 }
+
+.vertical-center {
+  /* Add position: relative or absolute on your own */
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%); /* Vertical centering */
+}
+
+/* Typography --------------------------------------------------------------- */
+
+button {
+  font-size: 1.7rem;
+}
+
+.display {
+  font-size: 2.5rem;
+  letter-spacing: 0.5rem;
+  text-align: end;
+}
+
+.panel,
+.display,
+button {
+  border-color: var(--gray-border-color);
+  border-style: solid;
+  border-width: 3px;
+}
+
+.operator {
+  background-color: var(--gray-background-color);
+}
+
+.big-button {
+  border-color: var(--blue-border-color);
+  background-color: var(--blue-background-color);
+}
+
+/* Hover effect ------------------------------------------------------------- */
