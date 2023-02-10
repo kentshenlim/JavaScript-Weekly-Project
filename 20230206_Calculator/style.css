@@ -73,6 +73,15 @@ div.second-row {
 }
 
 /* Typography --------------------------------------------------------------- */
+@font-face {
+  font-family: "digital-font";
+  src: url(font/Orbitron-VariableFont_wght.ttf);
+}
+
+button,
+.display {
+  font-family: digital-font;
+}
 
 button {
   font-size: 1.7rem;
