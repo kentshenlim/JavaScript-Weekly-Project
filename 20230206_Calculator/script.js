@@ -30,7 +30,7 @@ function infixToPostfix(list) {
     if (isNumber(item)) outputList.push(item);
     else {
       const crtPriority = priority[item];
-      while (opStack.length && priority[opStack[opStack.length - 1]] <= crtPriority) {
+      while (opStack.length && priority[opStack[opStack.length - 1]] >= crtPriority) {
         outputList.push(opStack.pop());
       }
       opStack.push(item);
@@ -88,6 +88,11 @@ function updateDisplay(s) {
 const digits = document.querySelectorAll('.digit');
 digits.forEach((btn) => {
   btn.addEventListener('click', (e) => {
+    if (isNextClear) {
+      digitString = '';
+      displayString = '';
+      isNextClear = false;
+    }
     digitString += buttonMapper[e.target.id];
     displayString += buttonMapper[e.target.id];
     updateDisplay(displayString);
@@ -98,6 +103,7 @@ digits.forEach((btn) => {
 const operators = document.querySelectorAll('.operator');
 operators.forEach((btn) => {
   btn.addEventListener('click', (e) => {
+    isNextClear = false;
     if (!digitString.length) return;
     // Don't do anything when op pressed first, or pressed consecutively
     tokenStore.push(digitString); // Store this number
@@ -117,7 +123,8 @@ equal.addEventListener('click', () => {
       tokenStore.push(digitString);
       const ans = postfixToAnswer(infixToPostfix(tokenStore));
       displayString = ans;
-      tokenStore = [ans]; // Can continue to push
+      tokenStore = []; // Can continue to push
+      digitString = ans;
     }
     isNextClear = true;
     updateDisplay(displayString);
