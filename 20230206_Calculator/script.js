@@ -57,7 +57,7 @@ function postfixToAnswer(s) {
 }
 
 /* Frontend functions */
-const string = '';
+const tokenStore = [];
 let digitString = '';
 let displayString = '';
 const buttonMapper = {
@@ -87,5 +87,15 @@ digits.forEach((btn) => {
       displayString = '';
     }
     digitString += buttonMapper[e.target.id];
+  });
+});
+
+operators.forEach((btn) => {
+  btn.addEventListener('click', (e) => {
+    if (!digitString.length) return;
+    // Don't do anything when op pressed first, or pressed consecutively
+    tokenStore.push(digitString); // Store this number
+    digitString = ''; // Clear this number
+    tokenStore.push(buttonMapper[e.target.id]);
   });
 });
