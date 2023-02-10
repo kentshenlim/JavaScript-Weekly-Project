@@ -35,3 +35,19 @@ Coding](https://mikkegoes.com/javascript-projects-for-beginners/).
 ### Answer reference
 
 - [Aaron Farrar](https://codepen.io/afarrar/pen/JRaEjP)
+
+## 20230206_Calculator
+
+### Overview
+
+- Store the input token as array, then convert the infix expression to postfix,
+  then evaluate the answer with postfix. This way takes into account precedence
+  rule easily without much thinking.
+- Alternatively, treat division first, by locating the divide symbol in string
+  or array. Then splice by converting the previous, symbol, and next number into
+  answer. Repeat this until no division symbol found, then repeat the whole
+  process for multiplication, subtraction and addition in that order.
+
+### Answer reference
+
+- [Vikas Lalwani](https://codepen.io/lalwanivikas/details/eZxjqo)
