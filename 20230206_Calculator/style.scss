@@ -15,3 +15,19 @@ $blue: hsl(217deg 99% 65%);
   border-radius: $radius;
   -khtml-border-radius: $radius;
 }
+
+* {
+  box-sizing: border-box;
+}
+
+body,
+:root {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  border: solid red 3px;
+}
