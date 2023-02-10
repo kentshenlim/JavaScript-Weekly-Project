@@ -34,9 +34,23 @@ div.panel {
 }
 
 .flex-column {
-  flex-direction: column;
+  flex-direction: column; /* Leave as default stretch for flexibility */
 }
 
 div.panel > * {
+  /*  The three rows */
   border: solid green 3px;
+  margin: 0;
+}
+
+div.first-row {
+  height: 20%;
+}
+
+div.second-row {
+  height: 16%;
+}
+
+div.third-row {
+  height: 64%;
 }
