@@ -1,0 +1,27 @@
+* {
+  box-sizing: border-box;
+}
+
+:root,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: max(100vw, 1000px);
+  height: 100vh;
+  display: flex;
+}
+
+div.left {
+  width: 80%;
+  height: 100%;
+  border: solid red 3px;
+}
+
+div.right {
+  width: 20%;
+  height: 100%;
+  border: solid blue 3px;
+}
