@@ -73,3 +73,12 @@
    - Just use `padding-top`
 
 ### 20230213_Drum
+
+1. HTML element: `kbd`
+
+   - Keyboard input element
+   - "Represents a span of inline text denoting textual user input from a
+     keyboard, voice input, or any other text entry device"
+   - The text content of the element will appear in keyboard font.
+     Furthermore, you can style that element in CSS, e.g. add border and white
+     background-color to make the elements resemble real key caps.
