@@ -1,8 +1,11 @@
+/* General customization ---------------------------------------------------- */
 * {
   box-sizing: border-box;
   --big-font-size: 3.5rem;
   --medium-font-size: 2rem;
   --small-font-size: 1.3rem;
+  --black: hsl(0deg 0% 7%);
+  --white: hsl(0deg 0% 100%);
 }
 
 :root,
@@ -11,6 +14,7 @@ body {
   padding: 0;
 }
 
+/* General layout ----------------------------------------------------------- */
 body {
   width: max(100vw, 1000px);
   height: max(100vh, 600px);
@@ -18,26 +22,20 @@ body {
 }
 
 div.left {
-  width: 70%;
+  width: 75%;
   height: 100%;
   border: solid red 3px;
 }
 
 div.right {
-  width: 30%;
+  width: 25%;
   height: 100%;
   border: solid blue 3px;
+  background-color: var(--black);
+  color: var(--white);
 }
 
-ul.key-mapping {
-  margin: 0;
-}
-
-ul.key-mapping li {
-  list-style: none;
-  font-size: var(--small-font-size);
-}
-
+/* General typography ------------------------------------------------------- */
 h1,
 h2 {
   text-align: center;
@@ -47,6 +45,31 @@ h1 {
   font-size: var(--big-font-size);
 }
 
-h2 {
+.right h2 {
   font-size: var(--medium-font-size);
+  border-bottom: solid var(--white) 3px;
+  padding: 2rem;
+  margin: 0; /* Between the header and the list */
+}
+
+/* Right panel styling ------------------------------------------------------ */
+ul.key-mapping {
+  margin: 0;
+  width: 70%;
+  margin: 0 auto; /* To center the mappings; don't use text-align center */
+  color: var(--white);
+}
+
+ul.key-mapping li {
+  list-style: none;
+  font-size: var(--small-font-size);
+  color: var(--white);
+}
+
+ul.key-mapping li:not(:first-child) {
+  margin-top: 1rem;
+}
+
+.right ul {
+  padding: 2rem;
 }
