@@ -36,6 +36,15 @@ div.right {
 }
 
 /* General typography ------------------------------------------------------- */
+@font-face {
+  font-family: cute-font;
+  src: url(font/Pacifico-Regular.ttf);
+}
+
+body {
+  font-family: cute-font;
+}
+
 h1,
 h2 {
   text-align: center;

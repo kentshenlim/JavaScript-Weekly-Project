@@ -121,3 +121,5 @@
      pressed. With the key code, we can make changes on element which has
      `data-key` set equal to the key code of the key pressed. With this
      strategy, you do not need to set event listener one-by-one.
+   - Different elements in one html can have the `data-key` attribute set to a
+     common value.
