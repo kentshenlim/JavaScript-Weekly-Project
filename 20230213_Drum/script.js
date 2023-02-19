@@ -12,13 +12,23 @@ const x = ((function () {
     },
     bindEvents() {
       window.addEventListener('keydown', (e) => {
+        // This when console.log here = drum object, so
+        // this.getElementAndKeyCode, this.playSound etc all work
         const { keyElement, keyCode } = this.getElementAndKeyCode(e);
         this.playSound(keyElement, keyCode);
+        // The this in function scope of function invoked here is also the
+        // object, so no need binding for this.playAnimation
         this.playAnimation(keyElement, keyCode);
       });
       this.drumKeys.forEach((element) => {
+        // When you pass in function in this manner, the this in the function
+        // scope of the function passed will be the object to which the event
+        // listener is attached to, therefore need binding, else the this
+        // keyword in the function will not be calling the drum object
         element.addEventListener('transitionend', this.removeKeyTransition.bind(this));
       }); // For labels in transitions
+      // For the remaining two, there is no this keyword in function so no need
+      // bother
       this.crashRide.addEventListener('transitionend', this.removeCrashRideTransition);
       this.hiHatTop.addEventListener('transitionend', this.removeHiHatTopTransition);
     },

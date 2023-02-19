@@ -68,3 +68,22 @@
    - `|` means or as usual
 
 ### 20230213_Drum
+
+1. Audio control
+
+2. `this` keyword in two scenarios
+   - `nodeList.forEach(item => item.addEventListener("click", this.callback))`
+     For this case, the `this` keyword in the scope of the `callback` will be
+     referring to the item to which the event listener is being attached to,
+     therefore, you will need binding:
+     `nodeList.forEach(item => item.addEventListener('click', this.callback.bind(this)))`
+   - `window.addEventListener('keydown', () => {this.callback1(); this.callback2()})`
+     In this case, you are passing an arrow function, and the body of arrow
+     function involves invoking some other functions. The `this` will be
+     referring to the object containing the methods itself, but not the object
+     to which the event is being attached to; therefore binding is not needed.
+   - Why is that so? Probably because the function invocation passed in as
+     argument, when called, is just a function invocation but not a method
+     invocation. The this will then be referred to the event. For the arrow
+     function, arrow function always follows lexical scope, the lexical scope
+     has `this` = object itself. Might be wrong ...
