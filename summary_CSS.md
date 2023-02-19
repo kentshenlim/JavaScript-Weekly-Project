@@ -140,7 +140,7 @@
    - Then for tilting, take `transform: rotate() scale()` and set the
      appropriate `transition` as well of course.
 
-4. Strategy: panel not too small
+4. Strategy: panel not too small, else overflow
 
    - Sometimes when your viewport is small, because your container has been set
      in units of vw and vh, the container will be too small, making overflow of

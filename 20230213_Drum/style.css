@@ -26,7 +26,6 @@ body {
 div.left {
   width: 75%;
   height: 100%;
-  border: solid red 3px;
   display: flex;
   flex-direction: column;
 }
@@ -106,7 +105,6 @@ ul.key-mapping li:not(:first-child) {
 
 /* Flying effect ------------------------------------------------------------ */
 .drum-kit-wrapper {
-  border: solid violet 3px;
   position: relative; /* For the three images to reference WRT it */
   height: 80%;
   width: 700px; /* Use absolute size, if resize the positions will all run */
@@ -116,7 +114,6 @@ ul.key-mapping li:not(:first-child) {
 
 .main-title {
   padding-top: 2rem;
-  border: solid blue 3px;
   height: 20%;
 }
 
