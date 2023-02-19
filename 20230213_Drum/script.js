@@ -1,6 +1,7 @@
 const x = ((function () {
   const drum = {
     init() {
+      window.addEventListener('keydown', playSound);
       this.cacheDom();
       this.bindEvents();
     },
@@ -12,7 +13,7 @@ const x = ((function () {
     },
     bindEvents() {
       this.drumKeys.array.forEach((element) => {
-        element.addEventListener('transitionend', this.removeKeyTransition);
+        element.addEventListener('transitionend', this.removeKeyTransition.bind(this));
       }); // For labels in transitions
       this.crashRide.addEventListener('transitionend', this.removeCrashRideTransition);
       this.hiHatTop.addEventListener('transitionend', this.removeHiHatTopTransition);
