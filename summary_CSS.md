@@ -147,5 +147,7 @@
      content. To solve this, limit the lower limit of the container size using
      the CSS `max` function:
      `body {width: max(100vw, 1000px); height: max(100vh, 700px);}`
+     With this, when the viewport is too small, scroll bar will be added in
+     place of overflow.
    - The static-type values depend on the minimum size of your content. They
      must be large enough for overflow not to happen.

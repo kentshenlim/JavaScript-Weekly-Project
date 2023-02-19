@@ -1,7 +1,6 @@
 const x = ((function () {
   const drum = {
     init() {
-      window.addEventListener('keydown', playSound);
       this.cacheDom();
       this.bindEvents();
     },
@@ -12,7 +11,13 @@ const x = ((function () {
       this.drumKeys = document.querySelectorAll('.key');
     },
     bindEvents() {
-      this.drumKeys.array.forEach((element) => {
+      window.addEventListener('keydown', (e) => {
+        console.log(e);
+        const { keyElement, keyCode } = this.getElementAndKeyCode(e);
+        console.log({ keyElement, keyCode });
+        this.playSound(keyElement, keyCode);
+      });
+      this.drumKeys.forEach((element) => {
         element.addEventListener('transitionend', this.removeKeyTransition.bind(this));
       }); // For labels in transitions
       this.crashRide.addEventListener('transitionend', this.removeCrashRideTransition);
@@ -20,7 +25,9 @@ const x = ((function () {
     },
     getElementAndKeyCode(e) {
       const { keyCode } = e;
-      const keyElement = document.querySelector(`div[data-keys="${keyCode}"]`);
+      const keyElement = document.querySelector(`div[data-key="${keyCode}"]`);
+      console.log('Hm');
+      console.log(keyElement);
       // keyElement is the label labelling the illustration
       return { keyElement, keyCode };
     },
