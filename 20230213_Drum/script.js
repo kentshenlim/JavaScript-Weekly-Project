@@ -12,10 +12,9 @@ const x = ((function () {
     },
     bindEvents() {
       window.addEventListener('keydown', (e) => {
-        console.log(e);
         const { keyElement, keyCode } = this.getElementAndKeyCode(e);
-        console.log({ keyElement, keyCode });
         this.playSound(keyElement, keyCode);
+        this.playAnimation(keyElement, keyCode);
       });
       this.drumKeys.forEach((element) => {
         element.addEventListener('transitionend', this.removeKeyTransition.bind(this));
@@ -26,8 +25,6 @@ const x = ((function () {
     getElementAndKeyCode(e) {
       const { keyCode } = e;
       const keyElement = document.querySelector(`div[data-key="${keyCode}"]`);
-      console.log('Hm');
-      console.log(keyElement);
       // keyElement is the label labelling the illustration
       return { keyElement, keyCode };
     },
