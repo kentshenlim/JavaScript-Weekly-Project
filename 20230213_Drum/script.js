@@ -63,18 +63,16 @@ const x = ((function () {
       this.crashRide.style.transform = 'rotate(0deg) scale(1.5)';
     },
     animateHiHatClosed() {
-      this.hiHatTop.style.top = '171px';
+      this.hiHatTop.style.top = '171px'; // Larger value, go down
     },
     removeCrashRideTransition(e) {
       if (e.propertyName !== 'transform') return;
       e.target.style.transform = 'rotate(-7.2deg) scale(1.5)';
     },
     removeHiHatTopTransition(e) {
-      if (e.propertyName !== 'transform') return;
       e.target.style.top = '166px';
     },
     removeKeyTransition(e) {
-      if (e.propertyName !== 'transform') return;
       e.target.classList.remove(this.playingClass);
     },
   };
