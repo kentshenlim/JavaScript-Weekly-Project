@@ -6,12 +6,14 @@
   --small-font-size: 1.3rem;
   --black: hsl(0deg 0% 7%);
   --white: hsl(0deg 0% 100%);
+  --transition-property: all ease-in-out 0.05s;
 }
 
 :root,
 body {
   margin: 0;
   padding: 0;
+  background-color: var(--white);
 }
 
 /* General layout ----------------------------------------------------------- */
@@ -25,14 +27,20 @@ div.left {
   width: 75%;
   height: 100%;
   border: solid red 3px;
+  display: flex;
+  flex-direction: column;
 }
 
 div.right {
   width: 25%;
   height: 100%;
-  border: solid blue 3px;
   background-color: var(--black);
   color: var(--white);
+}
+
+div.left > * {
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 /* General typography ------------------------------------------------------- */
@@ -42,7 +50,7 @@ div.right {
 }
 
 body {
-  font-family: cute-font;
+  font-family: cute-font; /* Inherited by default */
 }
 
 h1,
@@ -81,4 +89,112 @@ ul.key-mapping li:not(:first-child) {
 
 .right ul {
   padding: 2rem;
+}
+
+/* Flying effect ------------------------------------------------------------ */
+.drum-kit-wrapper {
+  border: solid violet 3px;
+  position: relative; /* For the three images to reference WRT it */
+  height: 80%;
+  width: 700px; /* Use absolute size, if resize the positions will all run */
+  margin: 0 auto;
+  text-align: center;
+}
+
+.main-title {
+  padding-top: 2rem;
+  border: solid blue 3px;
+  height: 20%;
+}
+
+.drum-kit {
+  width: 600px; /* Static */
+  position: relative;
+}
+
+.crash-cymbal {
+  position: absolute; /* Check the relative parent which is .drum-kit-wrapper */
+  top: 114px;
+  left: 18.5%;
+  transform: rotate(-7.2deg) scale(1.5); /* When crash is struck */
+  transition: var(--transition-property);
+}
+
+.hihat-top-cymbal {
+  position: absolute;
+  top: 166px;
+  right: 17%;
+  transform: scale(1.35);
+  z-index: 0;
+  transition: var(--transition-property);
+}
+
+.key {
+  display: inline-block;
+  transition: var(--transition-property);
+  position: absolute;
+  background: var(--white);
+  font-size: 1.5em;
+  height: 32px;
+  line-height: 25px;
+  width: 32px;
+  text-align: center;
+  border-radius: 4px;
+  border: 3px solid #aaa;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.65);
+  z-index: 2;
+}
+
+.key.kick {
+  top: 340px;
+  right: 275px;
+}
+
+.key.kick2 {
+  top: 340px;
+  right: 375px;
+}
+
+.key.snare {
+  right: 195px;
+  top: 250px;
+}
+
+.key.tom-high {
+  right: 280px;
+  top: 240px;
+}
+
+.key.tom-mid {
+  left: 275px;
+  top: 220px;
+}
+
+.key.tom-low {
+  top: 320px;
+  left: 185px;
+}
+
+.key.crash {
+  left: 120px;
+  top: 95px;
+}
+
+.key.ride {
+  left: 220px;
+  top: 95px;
+}
+
+.key.hihat-open {
+  right: 210px;
+  top: 155px;
+}
+
+.key.hihat-close {
+  right: 120px;
+  top: 155px;
+}
+
+.playing {
+  transform: scale(1.12); /* Activate this class with JS */
 }

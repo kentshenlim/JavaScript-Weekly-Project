@@ -123,3 +123,18 @@
      strategy, you do not need to set event listener one-by-one.
    - Different elements in one html can have the `data-key` attribute set to a
      common value.
+
+3. Strategy: flying effect
+
+   - When the hi-hat button is pressed, the hi-hat will tilt, mimicking it being
+     struck. How do you simulate that animation?
+   - Because you want the hi-hat to move independently of the main image (the
+     whole drum kit), this means you need multiple images.
+   - Enclose all images within a container. For the container, take
+     `position: relative`, while for the images set `position: relative`,
+     then adjust the position between images using `top` `bottom` `left`
+     `right` property.
+   - Because of this, you need to make the container to be statically-sized,
+     else when the window is resized everything will be out of position.
+   - Then for tilting, take `transform: rotate() scale()` and set the
+     appropriate `transition` as well of course.
