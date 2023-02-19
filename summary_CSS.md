@@ -16,34 +16,56 @@
      stylesheet".
    - This is especially useful when there are a number of similar properties
      (due to different engines) that you need to define. You can even set up
-     mixin taking in an arg: `@mixin corners ($radius) {}`
-   - To call, in the declaration `@include corners (5px)`
+     mixin taking in arg: `@mixin corners ($radius) {}`
+   - To call, in the declaration `@include corners (5px)`, where the thing in
+     parentheses are the arg
    - `$` means placeholder in SCSS
+   - Example:
+     `@mixin box-shadow($x, $y, $blur, $color) {box-shadow: $x $y $blur $color}`
+     The mixin declaration can set more than one property, here, not just
+     box-shadow. This is very useful when you sure those properties will often
+     occur together.
+     Then in the declaration for the element you want to style it:
+     `.my-element {@include box-shadow(2px, 2px, 5px, #888)}`
 
 3. SCSS syntax: `&`
 
    - "Used in nested selectors to refer to the outer selector", e.g. `&:hover`
+   - Example
+     `.button {background-color: blue; &:hover {background-color: green;}}`
 
 4. General
 
-   - Include specification on all similar properties, e.g.
+   - Include specification on all similar properties for accessibility of all
+     browser engines, e.g.
      `-moz-border-radius`, `-webkit-border-radius`, `border-radius`,
      `-khtml-border-radius`. This can be done conveniently with mixins in SCSS.
+     Those prefixes are vendor prefixes used in CSS to indicate which browser
+     engines a particular CSS property applies to. "Vendor prefixes were
+     introduced to allow browser vendors to experiment with new CSS features
+     before they were standardized, so that web dev could begin using them
+     before they were supported in all browsers." `-moz` for Firefox (Mozilla),
+     `-webkit` for Safari and Chrome (WebKit), and `-ms` for Internet Explorer
+     (Microsoft) (`khtml` is for Konqueror, but Konqueror has switched to using
+     WebKit, so `khtml` has become obsolete)
 
 ### 20230130_Clock
 
-1. Vertical centering
+1. Strategy: vertical centering
 
    - Without using flexbox
    - Use absolute position, then that item will be referenced WRT its parent:
      `{position: absolute; top: 50%; left: 50%; transform: translateX(-50%) translateY(-50%)}`
-   - When you `left: 50%; right: 50%;`, you move the upper left corner of your
+   - When you `top: 50%; left: 50%;`, you move the upper left corner of your
      element to center of its element (which is not you want). Note the % here
      are WRT parent box dimension.
    - When you `transform: translateX(-50%) translateY(-50%)`, you move that
      element to left 50% of its own width, then upwards 50% of its own height.
      With this, you correct the position of the element. Note the % here are WRT
      moving element.
+   - In CSS, the positive x-direction is towards horizontal right; the positive
+     y-direction is towards vertical downward, rather counter-intuitively. You
+     want to move upward not downward, so translateY(-50%).
    - Complexity because the "reference point/ pivot" of an element is not always
      its center.
    - Sometimes need to pair with `position: relative` instead.
@@ -64,12 +86,12 @@
      don't add
    - `overflow-x: scroll;` always adds scrollbar even not overflow
 
-3. Button text bold when button being clicked
+3. Strategy: button text bold when button being clicked
 
    - Use the :active pseudo-class
    - `button:active {font-weight: bold;}`
 
-4. Vertical centering of text in an element
+4. Strategy: vertical centering of text in an element
    - Just use `padding-top`
 
 ### 20230213_Drum

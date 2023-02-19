@@ -13,6 +13,12 @@
       then only the script.js (or anything enclosed by the `windows.onload`)
       will be executed. This is however redundant with the usage of `defer`
       keyword.
+    - Both `defer` and `windows.onload` could cause a delay in the user
+      experience because the JS will not execute until the entire page has
+      loaded. If you want the JS to be executed when the initial HTML document
+      has been completely loaded and parsed without waiting for external
+      resources to finish loading, use `DOMContentLoaded`:
+      `document.addEventListener("DOMContentLoaded", function)`
 2.  `setInterval(function, interval)`
     - The function will be executed repeatedly, with interval = interval between
       two successive executions.
