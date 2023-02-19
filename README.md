@@ -55,3 +55,12 @@ Coding](https://mikkegoes.com/javascript-projects-for-beginners/).
 ## 20230213_Drum
 
 ### Overview
+
+- For flying effect, use multiple images, positioned with `position: relative/absolute`,
+  then transform by toggling class with `keydown` and `transitionend`.
+- Audio element controlled with html `<audio>` and the js functions
+  `audioNode.currentTime` and `audioNode.play`.
+- Linking between elements and keys are achieved by setting `data-key` attribute
+  on the elements in html. In JS, get the keyCode, then use attribute selector
+  to get the right element. This means the value of the attribute must be equal
+  to the keyCode value (which is not free to be changed).

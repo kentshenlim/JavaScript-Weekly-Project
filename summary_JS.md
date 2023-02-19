@@ -124,8 +124,16 @@
      `removeChange() {this.style.classList.toggle('active')}`
 
 4. `e` keyword
+
    - You need to specify the `e` keyword when defining function. However, when
      passing the function into event listener, need not specify the `e` as
      input (you cannot pass invocation anyway). But that's fine because when
      you still call `e` in the body of the function the correct event can be
      recognized.
+
+5. `data-key` control
+   - Get the key code from event listener with `e.keyCode`
+   - Get the display element in html with query selector on attribute selector:
+     `const node = document.querySelector('div[data-key="${e.keyCode}"]')`
+     Note replace the outermost quote with backtick! Here we are using markdown.
+   - Similarly for the audio element, replacing the div by audio.
