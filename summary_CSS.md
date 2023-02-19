@@ -104,3 +104,20 @@
    - The text content of the element will appear in keyboard font.
      Furthermore, you can style that element in CSS, e.g. add border and white
      background-color to make the elements resemble real key caps.
+
+2. HTML attribute: `data-key`
+
+   - Suppose you want to bind different keyboard keys to different elements in
+     your HTML. One obvious way is to do one-by-one, add event listener
+     one-by-one.
+   - More effectively, you can use the `data-key` attribute in HTML. For
+     example,
+     `<button data-key="65">Press A</button>`
+     In this example, that attribute is set to 65. Every key in keyboard has
+     certain keycode associated with it. The A key has keycode value of 65. The
+     value of the `data-key` attribute can be retrieved using JS, which could
+     then be used to perform some action based on the value of the key.
+   - For example, when a key is pressed, we can get the key code of the key
+     pressed. With the key code, we can make changes on element which has
+     `data-key` set equal to the key code of the key pressed. With this
+     strategy, you do not need to set event listener one-by-one.
