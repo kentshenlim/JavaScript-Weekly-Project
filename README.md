@@ -64,3 +64,8 @@ Coding](https://mikkegoes.com/javascript-projects-for-beginners/).
   on the elements in html. In JS, get the keyCode, then use attribute selector
   to get the right element. This means the value of the attribute must be equal
   to the keyCode value (which is not free to be changed).
+- First time trying modular pattern!
+
+### Answer reference
+
+- [Arun Michael Dsouza](https://codepen.io/amdsouza92/pen/xdooWa)
