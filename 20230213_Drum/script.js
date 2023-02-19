@@ -1,4 +1,5 @@
-const x = ((function () {
+// eslint-disable-next-line no-unused-vars
+((function () {
   const drum = {
     init() {
       this.cacheDom();
@@ -60,13 +61,12 @@ const x = ((function () {
       // Enlarge the illustration key
     },
     animateCrashOrRide() {
-      this.crashRide.style.transform = 'rotate(0deg) scale(1.5)';
+      this.crashRide.style.transform = 'rotate(0deg) scale(1.5)'; // Original rotated
     },
     animateHiHatClosed() {
       this.hiHatTop.style.top = '171px'; // Larger value, go down
     },
     removeCrashRideTransition(e) {
-      if (e.propertyName !== 'transform') return;
       e.target.style.transform = 'rotate(-7.2deg) scale(1.5)';
     },
     removeHiHatTopTransition(e) {
@@ -77,5 +77,4 @@ const x = ((function () {
     },
   };
   drum.init();
-  return drum; // For debug, after debugging remove this
 })());
