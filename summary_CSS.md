@@ -131,10 +131,21 @@
    - Because you want the hi-hat to move independently of the main image (the
      whole drum kit), this means you need multiple images.
    - Enclose all images within a container. For the container, take
-     `position: relative`, while for the images set `position: relative`,
+     `position: relative`, while for the images set `position: absolute`,
      then adjust the position between images using `top` `bottom` `left`
-     `right` property.
+     `right` property. The images set will not be position relative to their
+     closest ancestor with `position: relative`.
    - Because of this, you need to make the container to be statically-sized,
      else when the window is resized everything will be out of position.
    - Then for tilting, take `transform: rotate() scale()` and set the
      appropriate `transition` as well of course.
+
+4. Strategy: panel not too small
+
+   - Sometimes when your viewport is small, because your container has been set
+     in units of vw and vh, the container will be too small, making overflow of
+     content. To solve this, limit the lower limit of the container size using
+     the CSS `max` function:
+     `body {width: max(100vw, 1000px); height: max(100vh, 700px);}`
+   - The static-type values depend on the minimum size of your content. They
+     must be large enough for overflow not to happen.
