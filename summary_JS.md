@@ -25,7 +25,7 @@
 
     - The function will be executed repeatedly, with interval = interval between
       two successive executions.
-    - interval is in ms
+    - interval is in ms (does not allow s, unlike CSS transition)
     - "Returns an interval ID which uniquely identifies the interval, so you can
       remove it later by calling `clearInterval(ID)`."
     - Typical call `Interval = setInterval(repeatMe, 10)`
@@ -80,8 +80,7 @@
 
 1. Audio control
 
-   - html part
-     Need to have the `audio` element:
+   - For html part, need to have the `audio` element:
      <audio src="" id="" data-key=""><audio>
      Normally just dump all the audio elements at the end of html before the
      `body` closing tag.
@@ -91,7 +90,7 @@
      `audioElement.currentTime = 0;`
      `audioElement.play();`
 
-2. `this` keyword in two scenarios when binding events
+2. `this` keyword in two scenarios when binding events in modular JS
 
    - `nodeList.forEach(item => item.addEventListener("click", this.callback))`
      For this case, the `this` keyword in the scope of the `callback` will be
@@ -105,9 +104,9 @@
      to which the event is being attached to; therefore binding is not needed.
    - Why is that so? Probably because the function invocation passed in as
      argument, when called, is just a function invocation but not a method
-     invocation. The this will then be referred to the event. For the arrow
+     invocation. The this will then be referring to the event. For the arrow
      function, arrow function always follows lexical scope, the lexical scope
-     has `this` = object itself. Might be wrong ...
+     has `this` = object itself.
 
 3. Returning to initial state after transition end: `transitionend`
 
@@ -122,8 +121,15 @@
      event listener:
      `node.addEventListener('transitionend", this.removeChange)`
      `removeChange() {this.style.classList.toggle('active')}`
+   - You therefor need two event listeners, one to trigger change, the other to
+     remove.
 
-4. `e` keyword
+4. `keydown` event
+
+   - Do something when a key is pressed:
+     `node.addEventListener('keydown', this.doSomething.bind(this))`
+
+5. `e` keyword
 
    - You need to specify the `e` keyword when defining function. However, when
      passing the function into event listener, need not specify the `e` as
@@ -131,7 +137,7 @@
      you still call `e` in the body of the function the correct event can be
      recognized.
 
-5. `data-key` control
+6. `data-key` control
    - Get the key code from event listener with `e.keyCode`
    - Get the display element in html with query selector on attribute selector:
      `const node = document.querySelector('div[data-key="${e.keyCode}"]')`

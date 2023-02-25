@@ -6,18 +6,20 @@
 
 1. SCSS syntax: `$name`
 
-   - This allows you to define global var in SCSS.
+   - This allows you to define reusable var in SCSS.
    - `$orange: #ffa600` is equivalent to CSS `* {--ORANGE: #ffa600}`
    - To use it, simply `color: $orange`, equivalent to CSS `color: var(--ORANGE)`
 
 2. SCSS syntax: `@mixin` and `@include`
 
+   - While `$name` allows you to predefine **value**, `@mixin` and `@include`
+     allow you to predefine **declaration**, or even set of **declarations**.
    - "Mixins allow you to define styles that can be re-used throughout your
      stylesheet".
    - This is especially useful when there are a number of similar properties
      (due to different engines) that you need to define. You can even set up
      mixin taking in arg: `@mixin corners ($radius) {}`
-   - To call, in the declaration `@include corners (5px)`, where the thing in
+   - To call, in the declaration `@include corners (5px)`, where the things in
      parentheses are the arg
    - `$` means placeholder in SCSS
    - Example:
@@ -25,7 +27,8 @@
      The mixin declaration can set more than one property, here, not just
      box-shadow. This is very useful when you sure those properties will often
      occur together.
-     Then in the declaration for the element you want to style it:
+     Then in the declaration for the element you want to style it use the
+     `@include` keyword:
      `.my-element {@include box-shadow(2px, 2px, 5px, #888)}`
 
 3. SCSS syntax: `&`
@@ -34,7 +37,7 @@
    - Example
      `.button {background-color: blue; &:hover {background-color: green;}}`
 
-4. General
+4. General good practice
 
    - Include specification on all similar properties for accessibility of all
      browser engines, e.g.
@@ -47,7 +50,7 @@
      before they were supported in all browsers." `-moz` for Firefox (Mozilla),
      `-webkit` for Safari and Chrome (WebKit), and `-ms` for Internet Explorer
      (Microsoft) (`khtml` is for Konqueror, but Konqueror has switched to using
-     WebKit, so `khtml` has become obsolete)
+     WebKit, so `khtml` has become obsolete).
 
 ### 20230130_Clock
 
@@ -56,19 +59,19 @@
    - Without using flexbox
    - Use absolute position, then that item will be referenced WRT its parent:
      `{position: absolute; top: 50%; left: 50%; transform: translateX(-50%) translateY(-50%)}`
+     which means you might need to change the parent to `{position: relative}`
    - When you `top: 50%; left: 50%;`, you move the upper left corner of your
      element to center of its element (which is not you want). Note the % here
-     are WRT parent box dimension.
+     are WRT **parent box** dimension.
    - When you `transform: translateX(-50%) translateY(-50%)`, you move that
-     element to left 50% of its own width, then upwards 50% of its own height.
-     With this, you correct the position of the element. Note the % here are WRT
-     moving element.
+     element to left 50% of **its own width**, then upwards 50% of
+     **its own height**. With this, you correct the position of the element.
+     Note the % here are WRT moving element.
    - In CSS, the positive x-direction is towards horizontal right; the positive
      y-direction is towards vertical downward, rather counter-intuitively. You
      want to move upward not downward, so translateY(-50%).
    - Complexity because the "reference point/ pivot" of an element is not always
      its center.
-   - Sometimes need to pair with `position: relative` instead.
 
 ### 20230206_Calculator
 
