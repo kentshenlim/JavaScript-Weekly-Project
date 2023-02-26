@@ -19,7 +19,7 @@ const ali = (function () {
 
     render() {
       for (let i = 0; i < this.colorOpt.length; i += 1) {
-        continue;
+        this.colorSelectableS[i].style.backgroundColor = `rgb(${this.colorOpt[i][0]} ${this.colorOpt[i][1]} ${this.colorOpt[i][2]})`;
       }
     },
 
