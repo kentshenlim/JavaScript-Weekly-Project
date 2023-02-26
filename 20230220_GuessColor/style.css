@@ -34,7 +34,7 @@ body {
 }
 
 div.main-wrapper {
-  width: 100vw;
+  width: max(100vw, 350px);
   height: max(100vh, 600px);
   border: solid red 3px;
   text-align: center;
@@ -102,4 +102,14 @@ div.picker-wrapper {
   display: grid;
   grid-template-rows: repeat(var(--GRID-M), auto);
   grid-template-columns: repeat(var(--GRID-N), auto);
+  justify-content: center;
+  align-content: center;
+  row-gap: 2rem;
+  column-gap: 2rem;
+}
+
+div.picker-wrapper > * {
+  border: solid green 3px;
+  width: max(10vw, 150px);
+  height: max(10vw, 150px);
 }
