@@ -69,3 +69,24 @@ Coding](https://mikkegoes.com/javascript-projects-for-beginners/).
 ### Answer reference
 
 - [Arun Michael Dsouza](https://codepen.io/amdsouza92/pen/xdooWa)
+
+## 20230220_GuessColor
+
+### Overview
+
+- Used `float: left` in layout.
+- For different number of opt depending on level of difficulty, answer just
+  `display: none`, as if they disappear, and don't add event listener to them
+  (use the length of colorOpt). Self attempt removes and creates elements,
+  rather tediously.
+- The random color generated can be passed as RGB string conveniently, which can
+  then be passed into string as RHS of `.style.backgroundColor` declaration.
+  Don't really need an array of `Array(3)`.
+- To disable further selection after correct answer chosen, change the color of
+  remaining opt to be the same as final answer, then clicking them again will
+  not lead to wrongAnswerResponse invocation, then the page appears as if
+  nothing happens.
+
+### Answer reference
+
+- [Michelle Huang](https://codepen.io/itsmhuang/pen/oxaReK)

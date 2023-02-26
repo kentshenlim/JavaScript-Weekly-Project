@@ -154,3 +154,40 @@
      place of overflow.
    - The static-type values depend on the minimum size of your content. They
      must be large enough for overflow not to happen.
+
+### 20230230_GuessColor
+
+1. Hide elements
+
+   - `display: none;`: This removes the element from the layout, which means
+     layout shift might happen if you have already written in the element in
+     your html and style the layout. **Cannot** interact with JS because not
+     rendered.
+   - `visibility: hidden;`: This **does not** remove the element from the
+     layout so layout shift will not happen. **Can** interact with JS. Pointer
+     events like hover **will not** happen because hidden.
+   - `opacity: none;`: This **does not** remove the element from the layout.
+     **Can** interact with JS. Pointer events **can** happen.
+
+So there are three distinguishing criteria: layout shift, JS interaction and
+pointer events. Based on above then, what is the point of having `display: none`
+element? One feature that uses this is to hide elements on different screen
+sizes, allowing you to create responsive designs that adapt to different
+devices.
+
+2. CSS property: `text-transform: uppercase;`
+
+   - This is better than all caps in html because: accessibility, consistency,
+     ease of maintenance (no need edit all words in html if want to change),
+     separation of concerns (visual display should be controlled by CSS;
+     content should be controlled by html; capitalization is visual).
+
+3. CSS property: `float`
+
+   - `float: left;` causes the element to be moved to the left of the
+     container and any subsequent content will wrap around it on the right-hand
+     side. e.g. set a width on an external container, set a calculated width on
+     the children, e.g. if 3 children per row divided by three, then
+     `float: left` on all the children. The three children will be on the same
+     row side-by-side even if they have `display: block`.
+   - Old-fashioned, should use `flex` or `grid`.

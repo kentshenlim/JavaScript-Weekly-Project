@@ -143,3 +143,42 @@
      `const node = document.querySelector('div[data-key="${e.keyCode}"]')`
      Note replace the outermost quote with backtick! Here we are using markdown.
    - Similarly for the audio element, replacing the div by audio.
+
+### 20230220_GuessColor
+
+1. Remove all children nodes of a node
+
+   - Use `while` loop:
+     `while (parent.firstChild) parent.firstChild.remove()`
+
+2. Tips on dealing with `this` context in modular JS
+
+   - Most braindead way is to always use arrow function in `.addEventListener`.
+     You wrote the functions first in the normal way, then, instead of putting
+     the `this.myFunction` as an arg into `.addEventListener`, write an arrow
+     function that leads to the execution of the `this.myFunction`.
+   - Better practice is of course to use `.bind()` if you have only one thing
+     to do if the event triggering, for better readability.
+
+3. `getRandomNumber` input
+
+   - This kind of return is common to get a random integer:
+     `return low + Math.floor(Math.random() * (high - low))`
+     In the argument, say if you want to get any integer in the range 3 to 11
+     inclusive, your second argument should be 12 but not 11, due to the
+     `Math.floor` function which excludes 12 from the return range.
+
+4. `removeEventListener('click', fnHandler)`
+
+   - e.g. when correct answer selected, you want to stop the user from
+     selecting other answer. This can be used, the `fnHandler` must be the same
+     function that you input when adding the event listener.
+   - For modular JS, this is difficult to implement because of the `this`.
+     Instead, simple maintain a global bool, and make the `fnHandler` triggers
+     only if the global bool is false, which means the correct answer not yet
+     selected.
+   - The answer achieves this by changing the color of all grids into that of
+     final answer; it checks the answer by getting the string for
+     node.style.backgroundColor declaration then compare; therefore, after the
+     right answer selected, clicking any of the remaining grid will not trigger
+     different action since all grids will have color equal to the answer.
