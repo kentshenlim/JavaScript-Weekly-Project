@@ -3,6 +3,7 @@ const ali = (function () {
 
     difficulty: 'hard', // Default value
     colorOpt: [], // An array of Array(3), each element representing RGB val
+    isResolved: false,
 
     init() {
       this.cacheDom();
@@ -25,6 +26,7 @@ const ali = (function () {
     render() {
       // For handling of color options
       this.prompt.style.visibility = 'hidden';
+      this.isResolved = false;
       this.generateColorOpt();
       this.insertChildElement();
       this.cacheAndBindEventsAllChildOfPickerWrapperAgain();
@@ -91,15 +93,7 @@ const ali = (function () {
         '.picker-wrapper>div',
       );
       this.colorSelectableS.forEach((item) => {
-        item.addEventListener('click', (e) => {
-          const nodeClicked = e.target;
-          if (this.checkAnswer(nodeClicked)) {
-            this.answerCorrectResponse();
-          } else {
-            this.answerWrongResponse();
-            nodeClicked.style.visibility = 'hidden';
-          }
-        });
+        item.addEventListener('click', this.colorClickCallBack.bind(this));
       });
     },
 
@@ -137,9 +131,10 @@ const ali = (function () {
       this.newColorAsked.textContent = 'PLAY AGAIN';
       this.prompt.textContent = 'CORRECT';
       this.prompt.style.visibility = 'visible';
+      this.isResolved = true;
       for (let i = 0; i < this.colorSelectableS.length; i += 1) {
-        const item = this.colorSelectableS[i];
-        item.style.backgroundColor = `rgb(${
+        const node = this.colorSelectableS[i];
+        node.style.backgroundColor = `rgb(${
           this.colorOpt[this.answer][0]
         } ${this.colorOpt[this.answer][1]} ${
           this.colorOpt[this.answer][2]
@@ -150,6 +145,18 @@ const ali = (function () {
     answerWrongResponse() {
       this.prompt.textContent = 'TRY AGAIN';
       this.prompt.style.visibility = 'visible';
+    },
+
+    colorClickCallBack(e) {
+      if (!this.isResolved) {
+        const nodeClicked = e.target;
+        if (this.checkAnswer(nodeClicked)) {
+          this.answerCorrectResponse();
+        } else {
+          this.answerWrongResponse();
+          nodeClicked.style.visibility = 'hidden';
+        }
+      }
     },
 
   };

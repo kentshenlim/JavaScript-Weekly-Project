@@ -117,8 +117,8 @@ div.picker-wrapper {
 }
 
 div.picker-wrapper > * {
-  width: max(10vw, 150px);
-  height: max(10vw, 150px);
+  width: max(10vw, 80px);
+  height: max(10vw, 80px);
   border-radius: 1rem;
   transition: var(--TRANSITION-PROPERTY);
 }
