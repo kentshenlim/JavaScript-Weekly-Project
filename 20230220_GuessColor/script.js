@@ -3,7 +3,7 @@ const ali = (function () {
 
     difficulty: 'hard', // Default value
     colorOpt: [], // An array of Array(3), each element representing RGB val
-    isResolved: false,
+    isResolved: false, // To stop event listener after correct answer selected
 
     init() {
       this.cacheDom();
