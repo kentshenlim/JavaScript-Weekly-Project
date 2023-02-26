@@ -19,12 +19,13 @@ const ali = (function () {
       this.firstRGBVal = document.getElementById('first-RGB-val');
       this.secondRGBVal = document.getElementById('second-RGB-val');
       this.thirdRGBVal = document.getElementById('third-RGB-val');
+      this.prompt = document.getElementById('prompt');
     },
 
     render() {
       this.generateColorOpt();
       this.insertChildElement();
-      this.cacheAllChildOfPickerWrapperAgain();
+      this.cacheAndBindEventsAllChildOfPickerWrapperAgain();
       // You need to re-cache the children. After clearing, the nodeList will
       // be pointing to null nodes.
       for (let i = 0; i < this.colorOpt.length; i += 1) {
@@ -67,6 +68,7 @@ const ali = (function () {
       for (let i = 0; i < numberNeeded; i += 1) {
         const node = document.createElement('div');
         node.classList.add('clickable'); // For styling in CSS
+        node.classList.add(String(i)); // For the answer matching
         this.pickerWrapper.appendChild(node);
       }
     },
@@ -81,10 +83,15 @@ const ali = (function () {
       }
     },
 
-    cacheAllChildOfPickerWrapperAgain() {
+    cacheAndBindEventsAllChildOfPickerWrapperAgain() {
       this.colorSelectableS = document.querySelectorAll(
         '.picker-wrapper>div',
       );
+      this.colorSelectableS.forEach((item) => {
+        item.addEventListener('click', (e) => {
+          console.log(e.target);
+        });
+      });
     },
 
     pickEasy() {
@@ -111,6 +118,20 @@ const ali = (function () {
         this.secondRGBVal.textContent,
         this.thirdRGBVal.textContent,
       ] = answerArr;
+    },
+
+    answerCorrectResponse() {
+      this.newColorAsked.textContent = 'PLAY AGAIN';
+      this.prompt.textContent = 'CORRECT';
+      this.prompt.style.visibility = 'visible';
+      for (let i = 0; i < this.colorSelectableS.length; i += 1) {
+        const item = this.colorSelectableS[i];
+        item.style.backgroundColor = `rgb(${
+          this.colorOpt[this.answer][0]
+        } ${this.colorOpt[this.answer][1]} ${
+          this.colorOpt[this.answer][2]
+        })`;
+      }
     },
 
   };
