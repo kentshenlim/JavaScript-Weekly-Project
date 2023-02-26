@@ -30,6 +30,8 @@ const ali = (function () {
       for (let i = 0; i < this.colorOpt.length; i += 1) {
         this.colorSelectableS[i].style.backgroundColor = `rgb(${this.colorOpt[i][0]} ${this.colorOpt[i][1]} ${this.colorOpt[i][2]})`;
       }
+      this.generateAnswer();
+      this.updateQuestion();
     },
 
     bindEvents() {
@@ -53,6 +55,7 @@ const ali = (function () {
         const newColor = new Array(3);
         for (let k = 0; k < 3; k += 1) {
           newColor[k] = this.getRandomNum(0, 256);
+          // 256 will not be generated because Math.floor used
         }
         this.colorOpt.push(newColor);
       }
@@ -97,13 +100,21 @@ const ali = (function () {
     },
 
     generateAnswer() {
-      this.answer = this.getRandomNum(0, 6);
-      return this.answer;
+      const upperLim = this.difficulty === 'hard' ? 6 : 3;
+      this.answer = this.getRandomNum(0, upperLim + 1);
+    },
+
+    updateQuestion() {
+      const answerArr = this.colorOpt[this.answer];
+      [
+        this.firstRGBVal.textContent,
+        this.secondRGBVal.textContent,
+        this.thirdRGBVal.textContent,
+      ] = answerArr;
     },
 
   };
 
   colorPicker.init();
-  console.log(colorPicker.generateAnswer());
   return colorPicker.generateAnswer;
 }());
