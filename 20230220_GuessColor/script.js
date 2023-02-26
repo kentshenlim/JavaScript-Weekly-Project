@@ -52,7 +52,7 @@ const ali = (function () {
       for (let i = 0; i < numberNeeded; i += 1) {
         const newColor = new Array(3);
         for (let k = 0; k < 3; k += 1) {
-          newColor[k] = this.getRandomNum(0, 255);
+          newColor[k] = this.getRandomNum(0, 256);
         }
         this.colorOpt.push(newColor);
       }
@@ -96,8 +96,14 @@ const ali = (function () {
       this.hardAsked.classList.add('chosen');
     },
 
+    generateAnswer() {
+      this.answer = this.getRandomNum(0, 6);
+      return this.answer;
+    },
+
   };
 
   colorPicker.init();
-  return colorPicker.pickerWrapper;
+  console.log(colorPicker.generateAnswer());
+  return colorPicker.generateAnswer;
 }());
