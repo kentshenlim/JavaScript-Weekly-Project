@@ -25,7 +25,7 @@ body {
 
 @media screen and (max-width: 800px) {
   * {
-    --BIG-FONT-SIZE: 3rem;
+    --BIG-FONT-SIZE: 2rem;
     --MEDIUM-FONT-SIZE: 1.5rem;
     --SMALL-FONT-SIZE: 0.75rem;
     --TITLE-WRAPPER-HEIGHT: 20%;

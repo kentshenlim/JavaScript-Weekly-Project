@@ -101,7 +101,7 @@ const ali = (function () {
 
     generateAnswer() {
       const upperLim = this.difficulty === 'hard' ? 6 : 3;
-      this.answer = this.getRandomNum(0, upperLim + 1);
+      this.answer = this.getRandomNum(0, upperLim); // No need + 1 here, 0 idx
     },
 
     updateQuestion() {
