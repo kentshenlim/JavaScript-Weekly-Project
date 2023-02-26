@@ -23,6 +23,8 @@ const ali = (function () {
     },
 
     render() {
+      // For handling of color options
+      this.prompt.style.visibility = 'hidden';
       this.generateColorOpt();
       this.insertChildElement();
       this.cacheAndBindEventsAllChildOfPickerWrapperAgain();
@@ -47,6 +49,7 @@ const ali = (function () {
       this.newColorAsked.addEventListener('click', () => {
         this.render();
       });
+      // Event listeners for color options are under cacheAndBindEventsAllChildOf PickerWrapperAgain
     },
 
     generateColorOpt() {

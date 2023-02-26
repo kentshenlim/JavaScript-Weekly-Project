@@ -123,6 +123,10 @@ div.picker-wrapper > * {
   transition: var(--TRANSITION-PROPERTY);
 }
 
+div.picker-wrapper > *:hover {
+  transform: scale(1.05);
+}
+
 .clickable {
   cursor: pointer;
 }
