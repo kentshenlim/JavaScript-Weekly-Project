@@ -6,7 +6,6 @@ const ali = (function () {
 
     init() {
       this.cacheDom();
-      this.generateColorOpt();
       this.render();
     },
 
@@ -19,6 +18,7 @@ const ali = (function () {
     },
 
     render() {
+      this.generateColorOpt();
       this.insertChildElement();
       this.cacheAllChildOfPickerWrapperAgain();
       // You need to re-cache the children. After clearing, the nodeList will
@@ -26,6 +26,10 @@ const ali = (function () {
       for (let i = 0; i < this.colorOpt.length; i += 1) {
         this.colorSelectableS[i].style.backgroundColor = `rgb(${this.colorOpt[i][0]} ${this.colorOpt[i][1]} ${this.colorOpt[i][2]})`;
       }
+    },
+
+    bindEvents() {
+
     },
 
     generateColorOpt() {
@@ -46,7 +50,6 @@ const ali = (function () {
       for (let i = 0; i < numberNeeded; i += 1) {
         const node = document.createElement('div');
         node.classList.add('clickable'); // For styling in CSS
-        console.log(this.pickerWrapper);
         this.pickerWrapper.appendChild(node);
       }
     },
