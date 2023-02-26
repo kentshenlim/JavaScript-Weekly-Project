@@ -11,7 +11,6 @@ body {
   margin: 0 auto; /* Easy horizontal centering*/
   padding-top: 20px; /* Seems to overflow in vertical direction */
   /* Without vertical centering, that's why hers stick to stripe easily */
-  border: solid red 3px;
 }
 
 .square {
