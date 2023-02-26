@@ -8,16 +8,16 @@ body {
   box-sizing: border-box;
   --BLUE: #2c8e99;
   --BLACK: #232323;
-  --BIG-FONT-SIZE: 6rem;
-  --MEDIUM-FONT-SIZE: 3rem;
-  --SMALL-FONT-SIZE: 1.5rem;
+  --BIG-FONT-SIZE: 6rem; /* @media control */
+  --MEDIUM-FONT-SIZE: 3rem; /* @media control */
+  --SMALL-FONT-SIZE: 1rem; /* @media control */
 }
 
 @media screen and (max-width: 800px) {
   * {
-    --BIG-FONT-SIZE: 4rem;
-    --MEDIUM-FONT-SIZE: 2rem;
-    --SMALL-FONT-SIZE: 1rem;
+    --BIG-FONT-SIZE: 3rem;
+    --MEDIUM-FONT-SIZE: 1.5rem;
+    --SMALL-FONT-SIZE: 0.75rem;
   }
 }
 
@@ -26,6 +26,8 @@ div.main-wrapper {
   height: max(100vh, 800px);
   border: solid red 3px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
 }
 
 div.title-wrapper {
@@ -33,13 +35,41 @@ div.title-wrapper {
   width: 100%;
   height: 30%;
   background-color: var(--BLUE);
-  border: solid green 3px;
   font-size: var(--MEDIUM-FONT-SIZE);
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: center; /* Vertical center */
 }
 
 div.title-wrapper .color-question {
   font-size: var(--BIG-FONT-SIZE);
+}
+
+nav.nav-wrapper {
+  font-size: var(--SMALL-FONT-SIZE);
+  color: var(--BLUE);
+}
+
+nav.nav-wrapper ul {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+nav.nav-wrapper li {
+  list-style: none;
+  border: solid red 3px;
+}
+
+nav.nav-wrapper li.new-color {
+  margin-right: 20%;
+}
+
+div.picker-wrapper {
+  background-color: var(--BLACK);
+}
+
+div.main-wrapper > * {
+  flex: 1 1 auto;
 }
