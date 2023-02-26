@@ -89,7 +89,13 @@ const ali = (function () {
       );
       this.colorSelectableS.forEach((item) => {
         item.addEventListener('click', (e) => {
-          console.log(e.target);
+          const nodeClicked = e.target;
+          if (this.checkAnswer(nodeClicked)) {
+            this.answerCorrectResponse();
+          } else {
+            this.answerWrongResponse();
+            nodeClicked.style.visibility = 'hidden';
+          }
         });
       });
     },
@@ -118,6 +124,10 @@ const ali = (function () {
         this.secondRGBVal.textContent,
         this.thirdRGBVal.textContent,
       ] = answerArr;
+    },
+
+    checkAnswer(clickedNode) {
+      return clickedNode.classList.contains(String(this.answer));
     },
 
     answerCorrectResponse() {
