@@ -15,6 +15,7 @@ const ali = (function () {
       this.easyAsked = document.getElementById('easy-asked');
       this.hardAsked = document.getElementById('hard-asked');
       this.colorSelectableS = document.querySelectorAll('.picker-wrapper>div');
+      this.pickerWrapper = document.getElementById('picker-wrapper');
     },
 
     render() {
@@ -35,8 +36,24 @@ const ali = (function () {
       }
     },
 
+    insertChildElement() {
+      this.removeAllChildOfPickerWrapper(); // Clear
+      const numberNeeded = (this.difficulty === 'hard') ? 6 : 3;
+      for (let i = 0; i < numberNeeded; i += 1) {
+        const node = document.createElement('div');
+        node.classList.add('clickable'); // For styling in CSS
+        this.pickerWrapper.appendChild(node);
+      }
+    },
+
     getRandomNum(lowLim, upLim) {
       return lowLim + Math.floor((upLim - lowLim) * Math.random());
+    },
+
+    removeAllChildOfPickerWrapper() {
+      while (this.pickerWrapper.firstChild) {
+        this.pickerWrapper.firstChild.remove();
+      }
     },
 
   };
