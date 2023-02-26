@@ -14,7 +14,8 @@ body {
   --MEDIUM-FONT-SIZE: 2.5rem; /* @media control */
   --SMALL-FONT-SIZE: 1rem; /* @media control */
   --TITLE-WRAPPER-HEIGHT: 30%; /* @media control */
-  --NAV-WRAPPER-HEIGHT: 1.5rem;
+  --NAV-WRAPPER-HEIGHT: 1.5rem; /* @media control */
+  /* No need media control for third panel; third panel will take/give remnants */
 }
 
 @media screen and (max-width: 800px) {
@@ -57,7 +58,6 @@ nav.nav-wrapper {
   color: var(--BLUE);
   height: var(--NAV-WRAPPER-HEIGHT);
   flex: 0 0 auto;
-  border: solid green 3px;
 }
 
 nav.nav-wrapper ul {
@@ -65,12 +65,13 @@ nav.nav-wrapper ul {
   justify-content: center;
   margin: 0;
   padding: 0;
+  height: 100%;
 }
 
 nav.nav-wrapper li {
   height: 100%;
   list-style: none;
-  border: solid red 3px;
+  height: 100%;
 }
 
 nav.nav-wrapper li.new-color {
@@ -79,9 +80,15 @@ nav.nav-wrapper li.new-color {
 
 nav.nav-wrapper li.difficulty {
   margin-right: 10px;
+  padding: 0 1rem;
+}
+
+nav.nav-wrapper li.difficulty.chosen {
+  background-color: var(--BLUE);
+  color: white;
 }
 
 div.picker-wrapper {
   background-color: var(--BLACK);
-  flex: 1 1 auto;
+  flex: 1 1 auto; /* Let the last panel take/lose all remnant */
 }
