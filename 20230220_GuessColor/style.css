@@ -113,3 +113,11 @@ div.picker-wrapper > * {
   height: max(10vw, 150px);
   border-radius: 1rem;
 }
+
+.clickable {
+  cursor: pointer;
+}
+
+li.prompt {
+  visibility: hidden;
+}
