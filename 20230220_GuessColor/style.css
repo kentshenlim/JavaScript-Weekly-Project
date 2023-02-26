@@ -8,9 +8,11 @@ body {
   box-sizing: border-box;
   --BLUE: #2c8e99;
   --BLACK: #232323;
-  --BIG-FONT-SIZE: 6rem; /* @media control */
-  --MEDIUM-FONT-SIZE: 3rem; /* @media control */
+  --BIG-FONT-SIZE: 5rem; /* @media control */
+  --MEDIUM-FONT-SIZE: 2.5rem; /* @media control */
   --SMALL-FONT-SIZE: 1rem; /* @media control */
+  --TITLE-WRAPPER-HEIGHT: 30%; /* @media control */
+  --NAV-WRAPPER-HEIGHT: 1rem;
 }
 
 @media screen and (max-width: 800px) {
@@ -18,12 +20,14 @@ body {
     --BIG-FONT-SIZE: 3rem;
     --MEDIUM-FONT-SIZE: 1.5rem;
     --SMALL-FONT-SIZE: 0.75rem;
+    --TITLE-WRAPPER-HEIGHT: 20%;
+    --NAV-WRAPPER-HEIGHT: 0.75rem;
   }
 }
 
 div.main-wrapper {
   width: 100vw;
-  height: max(100vh, 800px);
+  height: max(100vh, 600px);
   border: solid red 3px;
   text-align: center;
   display: flex;
@@ -33,9 +37,10 @@ div.main-wrapper {
 div.title-wrapper {
   color: #ffffff;
   width: 100%;
-  height: 30%;
+  height: var(--TITLE-WRAPPER-HEIGHT);
   background-color: var(--BLUE);
   font-size: var(--MEDIUM-FONT-SIZE);
+  padding: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: center; /* Vertical center */
@@ -48,6 +53,8 @@ div.title-wrapper .color-question {
 nav.nav-wrapper {
   font-size: var(--SMALL-FONT-SIZE);
   color: var(--BLUE);
+  height: var(--NAV-WRAPPER-HEIGHT);
+  flex: 0 0 auto;
 }
 
 nav.nav-wrapper ul {
@@ -68,8 +75,5 @@ nav.nav-wrapper li.new-color {
 
 div.picker-wrapper {
   background-color: var(--BLACK);
-}
-
-div.main-wrapper > * {
   flex: 1 1 auto;
 }
