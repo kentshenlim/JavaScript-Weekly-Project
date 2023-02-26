@@ -12,7 +12,7 @@ body {
   --MEDIUM-FONT-SIZE: 2.5rem; /* @media control */
   --SMALL-FONT-SIZE: 1rem; /* @media control */
   --TITLE-WRAPPER-HEIGHT: 30%; /* @media control */
-  --NAV-WRAPPER-HEIGHT: 1rem;
+  --NAV-WRAPPER-HEIGHT: 1.5rem;
 }
 
 @media screen and (max-width: 800px) {
@@ -21,7 +21,7 @@ body {
     --MEDIUM-FONT-SIZE: 1.5rem;
     --SMALL-FONT-SIZE: 0.75rem;
     --TITLE-WRAPPER-HEIGHT: 20%;
-    --NAV-WRAPPER-HEIGHT: 0.75rem;
+    --NAV-WRAPPER-HEIGHT: 1.25rem;
   }
 }
 
@@ -55,6 +55,7 @@ nav.nav-wrapper {
   color: var(--BLUE);
   height: var(--NAV-WRAPPER-HEIGHT);
   flex: 0 0 auto;
+  border: solid green 3px;
 }
 
 nav.nav-wrapper ul {
@@ -65,12 +66,17 @@ nav.nav-wrapper ul {
 }
 
 nav.nav-wrapper li {
+  height: 100%;
   list-style: none;
   border: solid red 3px;
 }
 
 nav.nav-wrapper li.new-color {
   margin-right: 20%;
+}
+
+nav.nav-wrapper li.difficulty {
+  margin-right: 10px;
 }
 
 div.picker-wrapper {
