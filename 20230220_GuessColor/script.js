@@ -1,4 +1,4 @@
-const ali = (function () {
+(function everything() {
   const colorPicker = {
 
     difficulty: 'hard', // Default value
@@ -162,5 +162,4 @@ const ali = (function () {
   };
 
   colorPicker.init();
-  return colorPicker.generateAnswer;
 }());
