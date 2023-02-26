@@ -111,7 +111,6 @@ div.picker-wrapper {
 }
 
 div.picker-wrapper > * {
-  border: solid green 3px;
   width: max(10vw, 150px);
   height: max(10vw, 150px);
   border-radius: 1rem;
