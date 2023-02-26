@@ -20,6 +20,7 @@ body {
   */
   --GRID-M: 2; /* @media control */
   --GRID-N: 3; /* @media control */
+  --TRANSITION-PROPERTY: all ease-in-out 0.3s;
 }
 
 @media screen and (max-width: 800px) {
@@ -85,9 +86,11 @@ nav.nav-wrapper span {
   display: inline-block;
   height: 100%;
   padding: 0 5px;
+  transition: var(--TRANSITION-PROPERTY);
 }
 
-nav.nav-wrapper span.chosen {
+nav.nav-wrapper span.chosen,
+nav.nav-wrapper span:hover {
   background-color: var(--BLUE);
   color: white;
 }
@@ -112,6 +115,7 @@ div.picker-wrapper > * {
   width: max(10vw, 150px);
   height: max(10vw, 150px);
   border-radius: 1rem;
+  transition: var(--TRANSITION-PROPERTY);
 }
 
 .clickable {
