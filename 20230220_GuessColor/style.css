@@ -1,3 +1,9 @@
+:root,
+body {
+  margin: 0;
+  padding: 0;
+}
+
 * {
   box-sizing: border-box;
   --BLUE: #2c8e99;
@@ -7,10 +13,12 @@
   --SMALL-FONT-SIZE: 1.5rem;
 }
 
-:root,
-body {
-  margin: 0;
-  padding: 0;
+@media screen and (max-width: 800px) {
+  * {
+    --BIG-FONT-SIZE: 4rem;
+    --MEDIUM-FONT-SIZE: 2rem;
+    --SMALL-FONT-SIZE: 1rem;
+  }
 }
 
 div.main-wrapper {
