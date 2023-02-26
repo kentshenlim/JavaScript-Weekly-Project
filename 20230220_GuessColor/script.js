@@ -19,6 +19,10 @@ const ali = (function () {
     },
 
     render() {
+      this.insertChildElement();
+      this.cacheAllChildOfPickerWrapperAgain();
+      // You need to re-cache the children. After clearing, the nodeList will
+      // be pointing to null nodes.
       for (let i = 0; i < this.colorOpt.length; i += 1) {
         this.colorSelectableS[i].style.backgroundColor = `rgb(${this.colorOpt[i][0]} ${this.colorOpt[i][1]} ${this.colorOpt[i][2]})`;
       }
@@ -37,11 +41,12 @@ const ali = (function () {
     },
 
     insertChildElement() {
-      this.removeAllChildOfPickerWrapper(); // Clear
+      this.removeAllChildOfPickerWrapper.call(this); // Clear
       const numberNeeded = (this.difficulty === 'hard') ? 6 : 3;
       for (let i = 0; i < numberNeeded; i += 1) {
         const node = document.createElement('div');
         node.classList.add('clickable'); // For styling in CSS
+        console.log(this.pickerWrapper);
         this.pickerWrapper.appendChild(node);
       }
     },
@@ -56,8 +61,14 @@ const ali = (function () {
       }
     },
 
+    cacheAllChildOfPickerWrapperAgain() {
+      this.colorSelectableS = document.querySelectorAll(
+        '.picker-wrapper>div',
+      );
+    },
+
   };
 
   colorPicker.init();
-  return colorPicker.colorOpt;
+  return colorPicker.pickerWrapper;
 }());
