@@ -134,6 +134,11 @@ const ali = (function () {
       }
     },
 
+    answerWrongResponse() {
+      this.prompt.textContent = 'TRY AGAIN';
+      this.prompt.style.visibility = 'visible';
+    },
+
   };
 
   colorPicker.init();
