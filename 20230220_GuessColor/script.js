@@ -34,12 +34,14 @@ const ali = (function () {
 
     bindEvents() {
       this.easyAsked.addEventListener('click', () => {
-        console.log('hi');
         this.pickEasy();
         this.render();
       });
       this.hardAsked.addEventListener('click', () => {
         this.pickHard();
+        this.render();
+      });
+      this.newColorAsked.addEventListener('click', () => {
         this.render();
       });
     },
@@ -84,10 +86,14 @@ const ali = (function () {
 
     pickEasy() {
       this.difficulty = 'easy';
+      this.easyAsked.classList.add('chosen');
+      this.hardAsked.classList.remove('chosen');
     },
 
     pickHard() {
       this.difficulty = 'hard';
+      this.easyAsked.classList.remove('chosen');
+      this.hardAsked.classList.add('chosen');
     },
 
   };

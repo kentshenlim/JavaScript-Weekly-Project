@@ -82,6 +82,11 @@ nav.nav-wrapper li {
   list-style: none;
 }
 
+nav.nav-wrapper .new-color {
+  padding: 0 5px;
+  transition: var(--TRANSITION-PROPERTY);
+}
+
 nav.nav-wrapper span {
   display: inline-block;
   height: 100%;
@@ -90,7 +95,8 @@ nav.nav-wrapper span {
 }
 
 nav.nav-wrapper span.chosen,
-nav.nav-wrapper span:hover {
+nav.nav-wrapper span:hover,
+li.new-color:hover {
   background-color: var(--BLUE);
   color: white;
 }
