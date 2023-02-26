@@ -7,6 +7,7 @@ const ali = (function () {
     init() {
       this.cacheDom();
       this.render();
+      this.bindEvents();
     },
 
     cacheDom() {
@@ -15,6 +16,9 @@ const ali = (function () {
       this.hardAsked = document.getElementById('hard-asked');
       this.colorSelectableS = document.querySelectorAll('.picker-wrapper>div');
       this.pickerWrapper = document.getElementById('picker-wrapper');
+      this.firstRGBVal = document.getElementById('first-RGB-val');
+      this.secondRGBVal = document.getElementById('second-RGB-val');
+      this.thirdRGBVal = document.getElementById('third-RGB-val');
     },
 
     render() {
@@ -29,7 +33,15 @@ const ali = (function () {
     },
 
     bindEvents() {
-
+      this.easyAsked.addEventListener('click', () => {
+        console.log('hi');
+        this.pickEasy();
+        this.render();
+      });
+      this.hardAsked.addEventListener('click', () => {
+        this.pickHard();
+        this.render();
+      });
     },
 
     generateColorOpt() {
@@ -68,6 +80,14 @@ const ali = (function () {
       this.colorSelectableS = document.querySelectorAll(
         '.picker-wrapper>div',
       );
+    },
+
+    pickEasy() {
+      this.difficulty = 'easy';
+    },
+
+    pickHard() {
+      this.difficulty = 'hard';
     },
 
   };
