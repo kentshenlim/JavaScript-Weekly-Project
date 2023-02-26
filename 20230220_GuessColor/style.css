@@ -39,7 +39,6 @@ body {
 div.main-wrapper {
   width: max(100vw, 350px);
   height: max(100vh, var(--MIN-HEIGHT));
-  border: solid red 3px;
   text-align: center;
   display: flex;
   flex-direction: column;
