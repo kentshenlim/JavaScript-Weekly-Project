@@ -16,9 +16,13 @@
      allow you to predefine **declaration**, or even set of **declarations**.
    - "Mixins allow you to define styles that can be re-used throughout your
      stylesheet".
-   - This is especially useful when there are a number of similar properties
-     (due to different engines) that you need to define. You can even set up
-     mixin taking in arg: `@mixin corners ($radius) {}`
+   - This is especially useful when there is a number of similar properties with
+     different prefixes like -webkit or -moz (due to different engines) that you
+     need to define, and reused over and over again throughout the stylesheet.
+   - You can even set up mixin taking in arg:
+     `@mixin corners ($radius) {}`
+     Note the arg always starts with dollar sign to let know that it is a
+     placeholder.
    - To call, in the declaration `@include corners (5px)`, where the things in
      parentheses are the arg
    - `$` means placeholder in SCSS
@@ -36,6 +40,8 @@
    - "Used in nested selectors to refer to the outer selector", e.g. `&:hover`
    - Example
      `.button {background-color: blue; &:hover {background-color: green;}}`
+   - This saves you from the need to write out `.button:hover{}` declaration
+     separately from the `.button{}`.
 
 4. General good practice
 
@@ -59,10 +65,11 @@
    - Without using flexbox
    - Use absolute position, then that item will be referenced WRT its parent:
      `{position: absolute; top: 50%; left: 50%; transform: translateX(-50%) translateY(-50%)}`
-     which means you might need to change the parent to `{position: relative}`
+     which means you might need to change the parent to non-static position like
+     `{position: relative}`
    - When you `top: 50%; left: 50%;`, you move the upper left corner of your
      element to center of its element (which is not you want). Note the % here
-     are WRT **parent box** dimension.
+     are WRT **parent-box** dimension.
    - When you `transform: translateX(-50%) translateY(-50%)`, you move that
      element to left 50% of **its own width**, then upwards 50% of
      **its own height**. With this, you correct the position of the element.
@@ -168,12 +175,13 @@
      events like hover **will not** happen because hidden.
    - `opacity: none;`: This **does not** remove the element from the layout.
      **Can** interact with JS. Pointer events **can** happen.
-
-So there are three distinguishing criteria: layout shift, JS interaction and
-pointer events. Based on above then, what is the point of having `display: none`
-element? One feature that uses this is to hide elements on different screen
-sizes, allowing you to create responsive designs that adapt to different
-devices.
+   - So there are three distinguishing criteria: layout shift, JS interaction
+     and pointer events.
+   - Based on above then, what is the point of having `display: none`
+     element? One feature that uses this is to hide elements on different screen
+     sizes, allowing you to create responsive designs that adapt to different
+     devices. You don't want layout change, no JS interaction and no pointer
+     event.
 
 2. CSS property: `text-transform: uppercase;`
 

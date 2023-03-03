@@ -6,8 +6,8 @@
 
 1.  `windows.onload = function() {}`
 
-    - "This is used with the window element to execute a script after the webpage has
-      completely loaded."
+    - "This is used with the window element to execute a script after the
+      webpage has completely loaded."
     - Basically, put all variable initialization and function declaration as a
       function body of the function at RHS.
     - The `windows.onload` is used to wait for the rest of the page to load,
@@ -74,7 +74,7 @@
 
    - Say want to split a string into array by any of `+`, `-`, `*`, `/`
    - s.split(/\+|\-|\*|\//g)
-   - `|` means or as usual
+   - `|` means "or" as usual
 
 ### 20230213_Drum
 
@@ -121,13 +121,14 @@
      event listener:
      `node.addEventListener('transitionend", this.removeChange)`
      `removeChange() {this.style.classList.toggle('active')}`
-   - You therefor need two event listeners, one to trigger change, the other to
+   - You therefore need two event listeners, one to trigger change, the other to
      remove.
 
 4. `keydown` event
 
    - Do something when a key is pressed:
      `node.addEventListener('keydown', this.doSomething.bind(this))`
+   - To get keycode, `e.keyCode`
 
 5. `e` keyword
 
@@ -138,11 +139,24 @@
      recognized.
 
 6. `data-key` control
+
    - Get the key code from event listener with `e.keyCode`
    - Get the display element in html with query selector on attribute selector:
      `const node = document.querySelector('div[data-key="${e.keyCode}"]')`
      Note replace the outermost quote with backtick! Here we are using markdown.
    - Similarly for the audio element, replacing the div by audio.
+
+7. General `data-` attribute and `dataset` property
+
+   - "The data- attribute is a way to store custom data attributes on HTML
+     elements."
+   - To access the value of data- using JS, you can use the `dataset` property
+     of the element.
+     `<div id="hi" data-action: "save">Hello world</div>`
+     `const element = document.getElementById("hi);`
+     `const action = element.dataset.action;`
+     `element.dataset.action` will look for element's `data-action` attribute
+     value. The action can be replaced with other name as well.
 
 ### 20230220_GuessColor
 
