@@ -8,5 +8,53 @@
     <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
   </head>
-  <body></body>
+  <body>
+    <h1 class="allcaps">hangman</h1>
+    <h2 class="allcaps">vanilla javascript hangman game</h2>
+    <h3 class="instruction">
+      Use the alphabet below to guess thw word, or click hint to get a clue.
+    </h3>
+    <ul class="character-wrapper">
+      <li>a</li>
+      <li>b</li>
+      <li>c</li>
+      <li>d</li>
+      <li>e</li>
+      <li>f</li>
+      <li>g</li>
+      <li>h</li>
+      <li>i</li>
+      <li>k</li>
+      <li>k</li>
+      <li>l</li>
+      <li>m</li>
+      <li>n</li>
+      <li>o</li>
+      <li>p</li>
+      <li>q</li>
+      <li>r</li>
+      <li>s</li>
+      <li>t</li>
+      <li>u</li>
+      <li>v</li>
+      <li>w</li>
+      <li>x</li>
+      <li>y</li>
+      <li>z</li>
+    </ul>
+    <h3 class="category">The Chosen Category Is Halogens</h3>
+    <div class="display-wrapper">
+      <div class="answer-char"></div>
+      <div class="answer-char"></div>
+      <div class="answer-char"></div>
+      <div class="answer-char"></div>
+      <div class="answer-char"></div>
+    </div>
+    <div class="life">You have <span id="live-number">10</span> lives</div>
+    <div class="hangman-graphic"></div>
+    <div class="buttons">
+      <button class="hint" id="hint">Hint</button>
+      <button class="play-again" id="play-again">Play again</button>
+    </div>
+  </body>
 </html>
