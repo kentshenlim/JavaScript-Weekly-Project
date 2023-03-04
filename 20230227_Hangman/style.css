@@ -4,18 +4,18 @@
     "Lucida Sans", Arial, sans-serif;
 }
 
-* {
-  box-sizing: border-box;
-}
-
 :root,
 body {
   margin: 0;
   padding: 0;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 body {
-  width: max(700px, 100vw);
+  width: max(100px, 100vw);
   height: max(400px, 100vh);
   border: solid red 3px;
 }
@@ -28,8 +28,13 @@ ul.character-wrapper {
   padding: 0;
   margin: 0;
   border: solid green 3px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+  width: min(800px, 50%);
+  margin: 0 auto;
 }
 
 ul.character-wrapper li {
   list-style: none;
+  border: solid green 3px;
 }

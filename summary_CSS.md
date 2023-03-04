@@ -162,7 +162,7 @@
    - The static-type values depend on the minimum size of your content. They
      must be large enough for overflow not to happen.
 
-### 20230230_GuessColor
+### 20230220_GuessColor
 
 1. Hide elements
 
@@ -199,3 +199,33 @@
      `float: left` on all the children. The three children will be on the same
      row side-by-side even if they have `display: block`.
    - Old-fashioned, should use `flex` or `grid`.
+
+### 20230227_Hangman
+
+1. Grid items wrap to multiple line depending on the width of grid-container.
+
+   - The declarations:
+
+   ```
+   ul.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: 10px;
+    list-style: none;
+    padding: 0;
+   }
+   ul.grid-container > li {
+    text-align: center;
+   }
+   ```
+
+   "These keywords tell the browser to handle the column sizing and element
+   wrapping for us so that the elements will wrap into rows when the width is
+   not large enough to fit them in without any overflow."
+
+   - `200px` is the minimum width of column.
+   - `1fr` ensures that if there is remnant space (e.g. if width of
+     grid-container is 700px and min is 200px, there will be 100px remnant),
+     that space will be distributed over the columns that already fit.
+
+2.
