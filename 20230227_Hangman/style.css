@@ -120,7 +120,6 @@ h2.setting-buttons button {
   color: var(--WHITE);
   background-color: var(--YELLOW);
   border-color: var(--WHITE);
-  width: max(15%, 200px);
 }
 
 h2.setting-buttons button:hover {
