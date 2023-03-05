@@ -202,7 +202,7 @@
 
 ### 20230227_Hangman
 
-1. Grid items wrap to multiple line depending on the width of grid-container.
+1. Grid items wrap to multiple lines depending on the width of grid-container
 
    - The declarations:
 
@@ -223,9 +223,24 @@
    wrapping for us so that the elements will wrap into rows when the width is
    not large enough to fit them in without any overflow."
 
+   - `repeat()` first arg is the number of times to be repeated, here is
+     `auto-fit` asking for however many that will fit into the row; second arg
+     is the size that you want to repeat that many times, described by the
+     `minmax()` CSS function here.
    - `200px` is the minimum width of column.
    - `1fr` ensures that if there is remnant space (e.g. if width of
      grid-container is 700px and min is 200px, there will be 100px remnant),
-     that space will be distributed over the columns that already fit.
+     that space will be distributed over the three columns that already fit.
+   - What if you want the height to always be equal to the width of each grid
+     item?
+     `grid-item {aspect-ratio: 1 / 1}`
 
-2.
+2. Sizing for best user experiences
+
+   - Button height and width: `max(%, 44px)` (10-15 mm fingertip); `44px` often
+     too big, let's do 75% `33px`
+   - Button spacing: `8-10px`
+
+3. Text-algin of element not at center when element size reduced
+   - Check padding of that element; when size too small the padding will be
+     significant. Set it to zero.
