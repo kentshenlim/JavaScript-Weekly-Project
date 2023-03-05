@@ -134,3 +134,12 @@ h2.setting-buttons button:hover {
 #category-display {
   text-decoration: underline double;
 }
+
+/* Change main-theme color when result resolved */
+:root.win {
+  --YELLOW: #53d72e;
+}
+
+:root.lose {
+  --YELLOW: #eb6119;
+}

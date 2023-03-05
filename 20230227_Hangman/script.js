@@ -43,7 +43,7 @@
       // Hashmap for answer, and number of unique letters
       this.charMap = {};
       this.uniqueCount = 0;
-      for (let i = 0; i < this.answer.length; i++) {
+      for (let i = 0; i < this.answer.length; i += 1) {
         const char = this.answer[i];
         if (!this.charMap[char]) {
           this.uniqueCount += 1;
@@ -72,6 +72,8 @@
       this.categoryDisplay.textContent = this.category;
       this.playAgainBtn.textContent = 'Try other';
       for (const node of this.letterBtns) node.disabled = false;
+      this.html.classList.remove('win');
+      this.html.classList.remove('lose');
     },
 
     renderHint() {
@@ -91,17 +93,20 @@
         this.lifeDisplay.textContent = this.life;
         if (this.life === 0) {
           this.playAgainBtn.textContent = 'Try again';
+          this.html.classList.add('lose');
         }
       } else {
         this.score += this.charMap[char].length; // Add more if char present multiple times
         for (const idx of this.charMap[char]) {
           const str = `#display-wrapper :nth-child(${String(idx + 1)})`;
+          // CSS numbering starts from 1; JS starts from 0
           const node = document.querySelector(str);
           node.classList.toggle('filled');
           node.textContent = char;
         }
         if (this.score === this.answer.length) {
           this.playAgainBtn.textContent = 'Play Again';
+          this.html.classList.add('win');
         }
       }
     },
