@@ -13,6 +13,7 @@
       this.hint = document.getElementById('hint');
       this.playAgain = document.getElementById('play-again');
       this.displayWrapper = document.getElementById('display-wrapper');
+      this.hintDisplay = document.getElementById('hint-display');
     },
 
     initiateAnswer(data) {
@@ -40,11 +41,15 @@
     renderEmptyElement() {
       // First remove all children
       while (this.displayWrapper.firstChild) this.displayWrapper.firstChild.remove();
-      for (let i = 0; i < this.answer.length; i++) {
+      for (let i = 0; i < this.answer.length; i += 1) {
         const element = document.createElement('li');
         element.textContent = '?';
         this.displayWrapper.appendChild(element);
       }
+    },
+
+    renderHint() {
+      this.hintDisplay.textContent = this.hint;
     },
   };
 
