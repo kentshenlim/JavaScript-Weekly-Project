@@ -1,3 +1,4 @@
+// eslint-disable-next-line func-names
 (function () {
   const display = {
 
@@ -177,5 +178,4 @@
     },
   };
   display.init();
-  console.log(display.charMap);
 }());
