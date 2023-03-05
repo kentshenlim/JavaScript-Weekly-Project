@@ -205,3 +205,11 @@
      interact with the second object. How?
    - Pass the second object as arg into the method. Therefore, the method in
      the first object will need an arg.
+
+2. Button clickable only once
+
+   - Change the `disabled` property of the node
+   - `const node = document.querySelector("button")`
+     `node.addEventListener("click", () => node.disabled = true)`
+   - To enable again, e.g. when start a new game, just set to false for all:
+     `for (const node of nodeList) node.disabled = false`

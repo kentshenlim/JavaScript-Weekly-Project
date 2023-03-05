@@ -107,6 +107,10 @@ ul.display-wrapper li {
   width: 44px;
 }
 
+ul.display-wrapper li.filled {
+  border-bottom: none;
+}
+
 h2.setting-buttons {
   display: flex;
   justify-content: center;

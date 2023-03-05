@@ -26,6 +26,7 @@
       this.playAgainBtn.addEventListener('click', this.resetCallback.bind(this));
       this.letterBtns.forEach((node) => {
         node.addEventListener('click', (e) => {
+          // Do something only if the game is still going on
           if (this.life === 0 || this.score === this.answer.length) return;
           const selectedChar = e.target.textContent;
           this.letterSelected(selectedChar);
@@ -42,16 +43,18 @@
       // Hashmap for answer, and number of unique letters
       this.charMap = {};
       this.uniqueCount = 0;
-      for (const char of this.answer) {
+      for (let i = 0; i < this.answer.length; i++) {
+        const char = this.answer[i];
         if (!this.charMap[char]) {
           this.uniqueCount += 1;
-          this.charMap[char] = 0;
+          this.charMap[char] = [];
         }
-        this.charMap[char] += 1;
+        this.charMap[char].push(i); // Record the idx of occurrence
       }
     },
 
     renderEmptyElement() {
+      // Render the blank spaces for display
       // First remove all children
       while (this.displayWrapper.firstChild) this.displayWrapper.firstChild.remove();
       for (let i = 0; i < this.answer.length; i += 1) {
@@ -90,7 +93,13 @@
           this.playAgainBtn.textContent = 'Try again';
         }
       } else {
-        this.score += this.charMap[char]; // Add more if char present multiple times
+        this.score += this.charMap[char].length; // Add more if char present multiple times
+        for (const idx of this.charMap[char]) {
+          const str = `#display-wrapper :nth-child(${String(idx + 1)})`;
+          const node = document.querySelector(str);
+          node.classList.toggle('filled');
+          node.textContent = char;
+        }
         if (this.score === this.answer.length) {
           this.playAgainBtn.textContent = 'Play Again';
         }
