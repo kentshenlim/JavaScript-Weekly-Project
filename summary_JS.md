@@ -223,3 +223,68 @@
      `actionBtns.forEach(node => node.addEventListener('click', () => {if (score < 3) ... }))`
      Then when the game has been resolved, the callback function will just do
      nothing.
+
+4. Canvas stickman
+
+   - You must have a `<canvas>` element in html to begin with:
+     `<canvas>Browser does not support HTML5 Canvas element.</canvas>`
+   - General strategy
+     You have a series of action; e.g. each action draw a circle, then the next
+     draw a line representing left hand, then draw a line representing right
+     hand. For each "frame", you need to define a function that draw the correct
+     stuff. Then, pass all the functions (each representing a frame) into an
+     array, then loop through the array to show the process of drawing the
+     stickman. That being said, there are some built-in functions in canvas that
+     you must be familiar to use the canvas.
+   - `getContext`
+     The target will be a canvas node. The argin is the "rendering context";
+     this will specify the type of rendering context to obtain. The most
+     commonly used context types are `2d` which is self-explanatory, or `webgl`
+     which is useful for 3d graphics and animations, stands for web graphics
+     language. Example call:
+     `const canvas = document.querySelector('canvas')`
+     `const ctx = canvas.getContext('2d')`
+     After you get the correct context, you can then invoke methods present in
+     the context. Here, our context is 2d, hence many built-in functions
+     available for drawing 2d objects will be available for us as in:
+     `ctx,fillRect(10, 10, 100, 100)`
+     which draws a rectangle.
+   - Define your pen, after get the right context
+     `ctx.beginPath()`
+     `ctx.strokeStyle = '#fff'` (use white pen)
+     `ctx.linewidth = 2` (the tip is this wide)
+   - `ctx.beginPath()`
+     This is used to begin a new path on the canvas. "A path in the canvas is a
+     series of connected lines, curves, and other shapes that can be drawn using
+     various drawing functions provided by the canvas API."
+     `ctx.beginPath()`
+     `ctx.arc(60, 25, 10, 0, Math.pi * 2, true)` (draw a circle)
+     `ctx.stroke()`
+     So, at first, you let it know you want to start a path, then you define a
+     path, then you ask to draw the outline of the defined path with
+     `ctx.stroke()`.
+   - Draw straight line
+     You can define this kind of function:
+     ```
+     drawStraightLine(fromX, fromY, toX, toY) {
+      ctx.moveTo(fromX, fromY);
+      ctx.lineTo(toX, toY);
+      ctx.stroke();
+     }
+     ```
+     Again, define the shape first, then stroke out the outline of the defined
+     shape.
+   - When should you `ctx.beginPath()`?
+     `ctx.beginPath()` will clear any previously defined path. If you are
+     drawing multiple shapes, call this before each shape to ensure that they
+     are drawn as separate entities.
+     ```
+     ctx.beginPath();
+     // Define shape here
+     ctx.stroke();
+     ctx.beginPath();
+     // Define second shape here
+     ctx.stroke();
+     ```
+     When you want to change your pen, you need to `ctx.beginPath()` after you
+     change the marker.
