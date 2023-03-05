@@ -252,5 +252,20 @@
    - Old mistake
 
 5. Double underline
+
    - `.uu {text-decoration: underline double}`
      With the extra `double` value
+
+6. `canvas` html element
+
+   - "An html element that provides a way to create and manipulate graphics and
+     animations on a webpage using JS. It allows you to draw shapes, lines,
+     images, text and more programmatically."
+   - "Provides a bitmap canvas that can be manipulated with JS."
+   - "Has a width and height att that specifies the size of the canvas in
+     pixels. Once the canvas is created, you can use JS to draw graphics on it
+     using various methods amd properties provided by the canvas API."
+   - Typical call:
+     `<canvas id="first-canvas">Browser does not support HTML5 Canvas</canvas>`
+   - Can: draw shapes, draw images, add text, create animations, manipulate
+     pixels.
