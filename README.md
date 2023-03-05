@@ -90,3 +90,19 @@ Coding](https://mikkegoes.com/javascript-projects-for-beginners/).
 ### Answer reference
 
 - [Michelle Huang](https://codepen.io/itsmhuang/pen/oxaReK)
+
+## 20230227_Hangman
+
+### Overview
+
+- Store all answer and hints in dic.
+- For hangman animation, use `<canvas>` html element. Each frame corresponding
+  to each defined function; the function will draw out the wanted geometry. Then
+  push all functions into an array, execute them one-by-one = animation.
+- Each drawing function = define shape then stroke. Remember to
+  `node.getContext('2d')` first, then define your pen by modifying the
+  properties of the `ctx = node.getContext('2d')`
+
+### Answer reference
+
+- [Cathy Dutton](https://codepen.io/cathydutton/pen/JjpxMm)
