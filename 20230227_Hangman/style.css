@@ -34,7 +34,7 @@ body {
   width: max(100px, 100vw); /* This controls the size of everything */
   height: max(400px, 100vh); /* This controls the size of everything */
   background-color: var(--YELLOW);
-  border: solid red 3px;
+  border: solid transparent 3px;
 }
 
 .all-caps {
@@ -105,4 +105,25 @@ ul.display-wrapper li {
   font-size: var(--FONT-SIZE-SMALL);
   border-bottom: solid var(--WHITE) 3px;
   width: 44px;
+}
+
+h2.setting-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 5%;
+}
+
+h2.setting-buttons button {
+  font-size: var(--FONT-SIZE-MEDIUM);
+  padding: 1rem;
+  border-radius: var(--BUTTON-BORDER-RADIUS);
+  color: var(--WHITE);
+  background-color: var(--YELLOW);
+  border-color: var(--WHITE);
+  width: max(15%, 200px);
+}
+
+h2.setting-buttons button:hover {
+  background-color: var(--WHITE);
+  color: var(--YELLOW);
 }
