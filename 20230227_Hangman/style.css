@@ -58,6 +58,12 @@ ul.character-wrapper button {
   border-color: transparent;
 }
 
+ul.character-wrapper button:hover {
+  color: var(--WHITE);
+  background-color: var(--YELLOW);
+  border-color: var(--WHITE);
+}
+
 h1 {
   font-size: var(--FONT-SIZE-BIG);
   margin: 0;
