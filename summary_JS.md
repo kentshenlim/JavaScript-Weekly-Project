@@ -196,3 +196,12 @@
      node.style.backgroundColor declaration then compare; therefore, after the
      right answer selected, clicking any of the remaining grid will not trigger
      different action since all grids will have color equal to the answer.
+
+### 20230227_Hangman
+
+1. Objects talking
+
+   - In a function, there are two objects. You want a method in first object to
+     interact with the second object. How?
+   - Pass the second object as arg into the method. Therefore, the method in
+     the first object will need an arg.

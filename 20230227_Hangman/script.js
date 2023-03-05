@@ -35,6 +35,10 @@
     render() {
 
     },
+
+    renderEmptyElement() {
+
+    },
   };
 
   const dictionary = {
