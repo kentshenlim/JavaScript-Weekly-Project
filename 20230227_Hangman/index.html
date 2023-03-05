@@ -11,9 +11,9 @@
   <body>
     <h1 class="all-caps">hangman</h1>
     <h2 class="all-caps">vanilla javascript hangman game</h2>
-    <h3 class="instruction">
+    <h2 class="instruction">
       Use the alphabet below to guess the word, or click hint to get a clue.
-    </h3>
+    </h2>
     <ul class="character-wrapper">
       <li>
         <button>a</button>
@@ -94,19 +94,20 @@
         <button>z</button>
       </li>
     </ul>
-    <h3 class="category">The Chosen Category Is Halogens</h3>
-    <div class="display-wrapper">
-      <div class="answer-char"></div>
-      <div class="answer-char"></div>
-      <div class="answer-char"></div>
-      <div class="answer-char"></div>
-      <div class="answer-char"></div>
-    </div>
-    <div class="life">You have <span id="live-number">10</span> lives</div>
+    <h2 class="category">The Chosen Category Is Halogens</h2>
+    <ul class="display-wrapper">
+      <li class="answer-char">A</li>
+      <li class="answer-char">B</li>
+      <li class="answer-char">C</li>
+      <li class="answer-char">D</li>
+      <li class="answer-char">E</li>
+    </ul>
+    <h2 class="life">You have <span id="live-number">10</span> lives</h2>
+    <h2 class="clue">Clue <span id="clue">-</span></h2>
     <div class="hangman-graphic"></div>
-    <div class="buttons">
+    <h2 class="setting-buttons">
       <button class="hint" id="hint">Hint</button>
       <button class="play-again" id="play-again">Play again</button>
-    </div>
+    </h2>
   </body>
 </html>

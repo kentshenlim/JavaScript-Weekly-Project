@@ -241,6 +241,11 @@
      too big, let's do 75% `33px`
    - Button spacing: `8-10px`
 
-3. Text-algin of element not at center when element size reduced
+3. Text-align of element not at center when element size reduced
+
    - Check padding of that element; when size too small the padding will be
      significant. Set it to zero.
+
+4. Putting global var in CSS
+
+   - Inheritable, so put under `:root{}` but not `*{}`
