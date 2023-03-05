@@ -211,5 +211,15 @@
    - Change the `disabled` property of the node
    - `const node = document.querySelector("button")`
      `node.addEventListener("click", () => node.disabled = true)`
+   - The display style will also change when a button is disabled
    - To enable again, e.g. when start a new game, just set to false for all:
      `for (const node of nodeList) node.disabled = false`
+
+3. Disable all buttons when current game finished
+
+   - In your event listener callback function, execute only when the game result
+     is still not resolved.
+   - e.g. for FT3 game,
+     `actionBtns.forEach(node => node.addEventListener('click', () => {if (score < 3) ... }))`
+     Then when the game has been resolved, the callback function will just do
+     nothing.
