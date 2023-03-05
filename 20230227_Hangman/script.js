@@ -5,6 +5,7 @@
       this.cacheDom();
       // eslint-disable-next-line no-use-before-define
       this.initiateAnswer(dictionary);
+      this.render();
     },
 
     cacheDom() {
@@ -33,11 +34,17 @@
     },
 
     render() {
-
+      this.renderEmptyElement();
     },
 
     renderEmptyElement() {
-
+      // First remove all children
+      while (this.displayWrapper.firstChild) this.displayWrapper.firstChild.remove();
+      for (let i = 0; i < this.answer.length; i++) {
+        const element = document.createElement('li');
+        element.textContent = '?';
+        this.displayWrapper.appendChild(element);
+      }
     },
   };
 
