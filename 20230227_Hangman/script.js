@@ -16,6 +16,8 @@
       this.hintBtn = document.getElementById('hint');
       this.playAgainBtn = document.getElementById('play-again');
       this.displayWrapper = document.getElementById('display-wrapper');
+      this.categoryDisplay = document.getElementById('category-display');
+      this.lifeDisplay = document.getElementById('life-display');
       this.hintDisplay = document.getElementById('hint-display');
     },
 
@@ -44,6 +46,8 @@
 
     render() {
       this.renderEmptyElement();
+      this.categoryDisplay.textContent = this.category;
+      this.lifeDisplay = this.life;
     },
 
     renderEmptyElement() {
