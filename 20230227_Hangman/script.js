@@ -6,14 +6,19 @@
       // eslint-disable-next-line no-use-before-define
       this.initiateAnswer(dictionary);
       this.render();
+      this.bindEvents();
     },
 
     cacheDom() {
       this.letters = document.querySelectorAll('#character-selector button');
-      this.hint = document.getElementById('hint');
-      this.playAgain = document.getElementById('play-again');
+      this.hintBtn = document.getElementById('hint');
+      this.playAgainBtn = document.getElementById('play-again');
       this.displayWrapper = document.getElementById('display-wrapper');
       this.hintDisplay = document.getElementById('hint-display');
+    },
+
+    bindEvents() {
+      this.hintBtn.addEventListener('click', this.renderHint.bind(this));
     },
 
     initiateAnswer(data) {
