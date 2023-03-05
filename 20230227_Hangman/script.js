@@ -6,12 +6,12 @@
       // eslint-disable-next-line no-use-before-define
       this.initiateAnswer(dictionary);
       this.renderEmptyElement();
+      this.resetAndRenderParameters();
       this.bindEvents();
-      this.life = 10;
-      this.score = 0;
     },
 
     cacheDom() {
+      this.html = document.querySelector('html');
       this.letterBtns = document.querySelectorAll('#character-selector button');
       this.hintBtn = document.getElementById('hint');
       this.playAgainBtn = document.getElementById('play-again');
@@ -26,8 +26,10 @@
       this.playAgainBtn.addEventListener('click', this.resetCallback.bind(this));
       this.letterBtns.forEach((node) => {
         node.addEventListener('click', (e) => {
+          if (this.life === 0 || this.score === this.answer.length) return;
           const selectedChar = e.target.textContent;
           this.letterSelected(selectedChar);
+          e.target.disabled = true;
         });
       });
     },
@@ -40,7 +42,6 @@
       // Hashmap for answer, and number of unique letters
       this.charMap = {};
       this.uniqueCount = 0;
-      // eslint-disable-next-line no-restricted-syntax
       for (const char of this.answer) {
         if (!this.charMap[char]) {
           this.uniqueCount += 1;
@@ -60,6 +61,16 @@
       }
     },
 
+    resetAndRenderParameters() {
+      this.life = 10;
+      this.score = 0;
+      this.lifeDisplay.textContent = this.life;
+      this.hintDisplay.textContent = '';
+      this.categoryDisplay.textContent = this.category;
+      this.playAgainBtn.textContent = 'Try other';
+      for (const node of this.letterBtns) node.disabled = false;
+    },
+
     renderHint() {
       this.hintDisplay.textContent = this.hint;
     },
@@ -68,21 +79,21 @@
       // eslint-disable-next-line no-use-before-define
       this.initiateAnswer(dictionary);
       this.renderEmptyElement();
-      this.life = 10;
-      this.score = 0;
-      this.lifeDisplay = this.life;
-      this.hintDisplay.textContent = '';
-      this.categoryDisplay.textContent = this.category;
+      this.resetAndRenderParameters();
     },
 
     letterSelected(char) {
       if (!this.charMap[char]) {
         this.life -= 1;
         this.lifeDisplay.textContent = this.life;
-        if (this.life === 0) console.log('Fuck');
+        if (this.life === 0) {
+          this.playAgainBtn.textContent = 'Try again';
+        }
       } else {
         this.score += this.charMap[char]; // Add more if char present multiple times
-        if (this.score === this.answer.length) console.log('Good');
+        if (this.score === this.answer.length) {
+          this.playAgainBtn.textContent = 'Play Again';
+        }
       }
     },
   };
