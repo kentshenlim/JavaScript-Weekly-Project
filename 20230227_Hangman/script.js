@@ -5,7 +5,7 @@
       this.cacheDom();
       // eslint-disable-next-line no-use-before-define
       this.initiateAnswer(dictionary);
-      this.render();
+      this.renderEmptyElement();
       this.bindEvents();
       this.life = 10;
       this.score = 0;
@@ -44,12 +44,6 @@
       }
     },
 
-    render() {
-      this.renderEmptyElement();
-      this.categoryDisplay.textContent = this.category;
-      this.lifeDisplay = this.life;
-    },
-
     renderEmptyElement() {
       // First remove all children
       while (this.displayWrapper.firstChild) this.displayWrapper.firstChild.remove();
@@ -65,10 +59,14 @@
     },
 
     resetCallback() {
+      // eslint-disable-next-line no-use-before-define
       this.initiateAnswer(dictionary);
-      this.render();
+      this.renderEmptyElement();
       this.life = 10;
       this.score = 0;
+      this.lifeDisplay = this.life;
+      this.hintDisplay.textContent = '';
+      this.categoryDisplay.textContent = this.category;
     },
   };
 

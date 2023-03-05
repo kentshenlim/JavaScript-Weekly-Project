@@ -126,3 +126,7 @@ h2.setting-buttons button:hover {
   background-color: var(--WHITE);
   color: var(--YELLOW);
 }
+
+#category-display {
+  text-decoration: underline double;
+}

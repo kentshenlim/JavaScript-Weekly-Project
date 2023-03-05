@@ -249,3 +249,7 @@
 4. Putting global var in CSS
 
    - Inheritable, so put under `:root{}` but not `*{}`
+
+5. Double underline
+   - `.uu {text-decoration: underline double}`
+     With the extra `double` value
