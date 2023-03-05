@@ -7,11 +7,21 @@
   --WHITE: #ffffff;
   --FONT-SIZE-BIG: min(6vw, 4rem);
   --FONT-SIZE-MEDIUM: min(4vw, 2rem);
-  --FONT-SIZE-SMALL: 22px;
+  --FONT-SIZE-SMALL: 22px; /* @media */
+  --BUTTON-MIN-WIDTH: 44px; /* @media */
+  --BUTTON-BORDER-RADIUS: 10px; /* @media */
 }
 
 * {
   box-sizing: border-box;
+}
+
+@media screen and (max-width: 600px) {
+  :root {
+    --FONT-SIZE-SMALL: 15px;
+    --BUTTON-MIN-WIDTH: 22px;
+    --BUTTON-BORDER-RADIUS: 5px;
+  }
 }
 
 :root,
@@ -24,6 +34,7 @@ body {
   width: max(100px, 100vw); /* This controls the size of everything */
   height: max(400px, 100vh); /* This controls the size of everything */
   background-color: var(--YELLOW);
+  border: solid red 3px;
 }
 
 .all-caps {
@@ -36,7 +47,7 @@ ul.character-wrapper {
   display: grid;
   grid-template-columns: repeat(
     auto-fit,
-    minmax(44px, 1fr)
+    minmax(var(--BUTTON-MIN-WIDTH), 1fr)
   ); /* 44px user experience, let's do half 22px */
   gap: 10px; /* User experience */
   width: min(800px, 50%);
@@ -54,7 +65,7 @@ ul.character-wrapper button {
   padding: 0;
   color: var(--YELLOW);
   font-size: var(--FONT-SIZE-SMALL);
-  border-radius: 10px;
+  border-radius: var(--BUTTON-BORDER-RADIUS);
   border-color: transparent;
 }
 
@@ -74,6 +85,7 @@ h2 {
   font-size: var(--FONT-SIZE-MEDIUM);
   margin: 0;
   margin-top: 1%;
+  padding: 0 1rem;
 }
 
 button {
