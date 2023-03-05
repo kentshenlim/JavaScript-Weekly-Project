@@ -12,7 +12,7 @@
     },
 
     cacheDom() {
-      this.letters = document.querySelectorAll('#character-selector button');
+      this.letterBtns = document.querySelectorAll('#character-selector button');
       this.hintBtn = document.getElementById('hint');
       this.playAgainBtn = document.getElementById('play-again');
       this.displayWrapper = document.getElementById('display-wrapper');
@@ -24,6 +24,12 @@
     bindEvents() {
       this.hintBtn.addEventListener('click', this.renderHint.bind(this));
       this.playAgainBtn.addEventListener('click', this.resetCallback.bind(this));
+      this.letterBtns.forEach((node) => {
+        node.addEventListener('click', (e) => {
+          const selectedChar = e.target.textContent;
+          this.letterSelected(selectedChar);
+        });
+      });
     },
 
     initiateAnswer(data) {
@@ -67,6 +73,17 @@
       this.lifeDisplay = this.life;
       this.hintDisplay.textContent = '';
       this.categoryDisplay.textContent = this.category;
+    },
+
+    letterSelected(char) {
+      if (!this.charMap[char]) {
+        this.life -= 1;
+        this.lifeDisplay.textContent = this.life;
+        if (this.life === 0) console.log('Fuck');
+      } else {
+        this.score += this.charMap[char]; // Add more if char present multiple times
+        if (this.score === this.answer.length) console.log('Good');
+      }
     },
   };
 
