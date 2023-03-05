@@ -1,8 +1,29 @@
 (function () {
   const display = {
 
+    init() {
+      this.cacheDom();
+      // eslint-disable-next-line no-use-before-define
+      this.initiateAnswer(dictionary);
+    },
+
+    cacheDom() {
+      this.letters = document.querySelectorAll('#character-selector button');
+      this.hint = document.getElementById('hint');
+      this.playAgain = document.getElementById('play-again');
+      this.displayWrapper = document.getElementById('display-wrapper');
+    },
+
+    initiateAnswer(data) {
+      const obj = data.getCategoryAndElementAndHint();
+      this.category = obj.category;
+      this.answer = obj.answer;
+      this.hint = obj.hint;
+    },
   };
+
   const dictionary = {
+
     data: {
       'Alkali Metal': {
         lithium: 'Rechargeable batteries',
@@ -51,6 +72,7 @@
         radon: 'Health hazard',
       },
     },
+
     getCategoryAndElementAndHint() {
       const categories = Object.keys(this.data);
       const category = categories[this.getRandomNumber(0, categories.length)];
@@ -59,9 +81,10 @@
       const hint = this.data[category][answer];
       return { category, answer, hint };
     },
+
     getRandomNumber(low, up) {
       return Math.floor(Math.random() * (up - low)) + low;
     },
   };
-  console.log(dictionary.getCategoryAndElementAndHint());
+  display.init();
 }());
