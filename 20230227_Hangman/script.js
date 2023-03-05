@@ -19,6 +19,21 @@
       this.category = obj.category;
       this.answer = obj.answer;
       this.hint = obj.hint;
+      // Hashmap for answer, and number of unique letters
+      this.charMap = {};
+      this.uniqueCount = 0;
+      // eslint-disable-next-line no-restricted-syntax
+      for (const char of this.answer) {
+        if (!this.charMap[char]) {
+          this.uniqueCount += 1;
+          this.charMap[char] = 0;
+        }
+        this.charMap[char] += 1;
+      }
+    },
+
+    render() {
+
     },
   };
 
@@ -87,4 +102,5 @@
     },
   };
   display.init();
+  console.log(display.charMap);
 }());
