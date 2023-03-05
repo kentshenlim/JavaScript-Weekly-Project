@@ -7,6 +7,8 @@
       this.initiateAnswer(dictionary);
       this.render();
       this.bindEvents();
+      this.life = 10;
+      this.score = 0;
     },
 
     cacheDom() {
@@ -19,6 +21,7 @@
 
     bindEvents() {
       this.hintBtn.addEventListener('click', this.renderHint.bind(this));
+      this.playAgainBtn.addEventListener('click', this.resetCallback.bind(this));
     },
 
     initiateAnswer(data) {
@@ -55,6 +58,13 @@
 
     renderHint() {
       this.hintDisplay.textContent = this.hint;
+    },
+
+    resetCallback() {
+      this.initiateAnswer(dictionary);
+      this.render();
+      this.life = 10;
+      this.score = 0;
     },
   };
 
