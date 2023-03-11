@@ -86,9 +86,11 @@
      `body` closing tag.
    - To play, reset the `currentTime`, then play. If not resetting, multiple
      of them will play together like echo.
-     `const audioElement = document.querySelector("")`
-     `audioElement.currentTime = 0;`
-     `audioElement.play();`
+     ```
+     const audioElement = document.querySelector("")
+     audioElement.currentTime = 0;
+     audioElement.play();
+     ```
 
 2. `this` keyword in two scenarios when binding events in modular JS
 
@@ -199,92 +201,104 @@
 
 ### 20230227_Hangman
 
-1. Objects talking
+1.  Objects talking
 
-   - In a function, there are two objects. You want a method in first object to
-     interact with the second object. How?
-   - Pass the second object as arg into the method. Therefore, the method in
-     the first object will need an arg.
+    - In a function, there are two objects. You want a method in first object to
+      interact with the second object. How?
+    - Pass the second object as arg into the method. Therefore, the method in
+      the first object will need an arg.
 
-2. Button clickable only once
+2.  Button clickable only once
 
-   - Change the `disabled` property of the node
-   - `const node = document.querySelector("button")`
-     `node.addEventListener("click", () => node.disabled = true)`
-   - The display style will also change when a button is disabled
-   - To enable again, e.g. when start a new game, just set to false for all:
-     `for (const node of nodeList) node.disabled = false`
+    - Change the `disabled` property of the node
+    - `const node = document.querySelector("button")`
+      `node.addEventListener("click", () => node.disabled = true)`
+    - The display style will also change when a button is disabled
+    - To enable again, e.g. when start a new game, just set to false for all:
+      `for (const node of nodeList) node.disabled = false`
 
-3. Disable all buttons when current game finished
+3.  Disable all buttons when current game finished
 
-   - In your event listener callback function, execute only when the game result
-     is still not resolved.
-   - e.g. for FT3 game,
-     `actionBtns.forEach(node => node.addEventListener('click', () => {if (score < 3) ... }))`
-     Then when the game has been resolved, the callback function will just do
-     nothing.
+    - In your event listener callback function, execute only when the game result
+      is still not resolved.
+    - e.g. for FT3 game,
+      `actionBtns.forEach(node => node.addEventListener('click', () => {if (score < 3) ... }))`
+      Then when the game has been resolved, the callback function will just do
+      nothing.
 
-4. Canvas stickman
+4.  Canvas stickman
 
-   - You must have a `<canvas>` element in html to begin with:
-     `<canvas>Browser does not support HTML5 Canvas element.</canvas>`
-   - General strategy
-     You have a series of action; e.g. each action draw a circle, then the next
-     draw a line representing left hand, then draw a line representing right
-     hand. For each "frame", you need to define a function that draw the correct
-     stuff. Then, pass all the functions (each representing a frame) into an
-     array, then loop through the array to show the process of drawing the
-     stickman. That being said, there are some built-in functions in canvas that
-     you must be familiar to use the canvas.
-   - `getContext`
-     The target will be a canvas node. The argin is the "rendering context";
-     this will specify the type of rendering context to obtain. The most
-     commonly used context types are `2d` which is self-explanatory, or `webgl`
-     which is useful for 3d graphics and animations, stands for web graphics
-     language. Example call:
-     `const canvas = document.querySelector('canvas')`
-     `const ctx = canvas.getContext('2d')`
-     After you get the correct context, you can then invoke methods present in
-     the context. Here, our context is 2d, hence many built-in functions
-     available for drawing 2d objects will be available for us as in:
-     `ctx,fillRect(10, 10, 100, 100)`
-     which draws a rectangle.
-   - Define your pen, after get the right context
-     `ctx.beginPath()`
-     `ctx.strokeStyle = '#fff'` (use white pen)
-     `ctx.linewidth = 2` (the tip is this wide)
-   - `ctx.beginPath()`
-     This is used to begin a new path on the canvas. "A path in the canvas is a
-     series of connected lines, curves, and other shapes that can be drawn using
-     various drawing functions provided by the canvas API."
-     `ctx.beginPath()`
-     `ctx.arc(60, 25, 10, 0, Math.pi * 2, true)` (draw a circle)
-     `ctx.stroke()`
-     So, at first, you let it know you want to start a path, then you define a
-     path, then you ask to draw the outline of the defined path with
-     `ctx.stroke()`.
-   - Draw straight line
-     You can define this kind of function:
-     ```
-     drawStraightLine(fromX, fromY, toX, toY) {
-      ctx.moveTo(fromX, fromY);
-      ctx.lineTo(toX, toY);
+    - You must have a `<canvas>` element in html to begin with:
+      `<canvas>Browser does not support HTML5 Canvas element.</canvas>`
+    - General strategy  
+      You have a series of action; e.g. each action draw a circle, then the next
+      draw a line representing left hand, then draw a line representing right
+      hand. For each "frame", you need to define a function that draw the correct
+      stuff. Then, pass all the functions (each representing a frame) into an
+      array, then loop through the array to show the process of drawing the
+      stickman. That being said, there are some built-in functions in canvas that
+      you must be familiar in order to use the canvas.
+    - `getContext`  
+      The target will be a canvas node. The argin is the "rendering context";
+      this will specify the type of rendering context to obtain. The most
+      commonly used context types are `2d` which is self-explanatory, or `webgl`
+      which is useful for 3d graphics and animations, stands for web graphics
+      language. Example call:
+      ```
+      const canvas = document.querySelector('canvas');
+      const ctx = canvas.getContext('2d');
+      ```
+      After you get the correct context, you can then invoke methods present in
+      the context. Here, our context is 2d, hence many built-in functions
+      available for drawing 2d objects will be available for us as in:
+      `ctx.fillRect(10, 10, 100, 100)`
+      which draws a rectangle.
+    - Define your pen, after get the right context
+
+      ```
+      ctx.beginPath();
+      ctx.strokeStyle = '#fff'; // Use white pen
+      ctx.linewidth = 2; // The tip is this wide
+      ```
+
+    - `ctx.beginPath()`  
+      This is used to begin a new path on the canvas. "A path in the canvas is a
+      series of connected lines, curves, and other shapes that can be drawn using
+      various drawing functions provided by the canvas API."
+
+      ```
+      ctx.beginPath();
+      ctx.arc(60, 25, 10, 0, Math.pi * 2, true); // Draw a circle
       ctx.stroke();
-     }
-     ```
-     Again, define the shape first, then stroke out the outline of the defined
-     shape.
-   - When should you `ctx.beginPath()`?
-     `ctx.beginPath()` will clear any previously defined path. If you are
-     drawing multiple shapes, call this before each shape to ensure that they
-     are drawn as separate entities.
-     ```
-     ctx.beginPath();
-     // Define shape here
-     ctx.stroke();
-     ctx.beginPath();
-     // Define second shape here
-     ctx.stroke();
-     ```
-     When you want to change your pen, you need to `ctx.beginPath()` after you
-     change the marker.
+      ```
+
+      So, at first, you let it know you want to start a path, then you define a
+      path, then you ask to draw the outline of the defined path with
+      `ctx.stroke()`.
+
+    - Draw straight line
+      You can define this kind of function:
+      ```
+      drawStraightLine(fromX, fromY, toX, toY) {
+        ctx.moveTo(fromX, fromY);
+        ctx.lineTo(toX, toY);
+        ctx.stroke();
+      }
+      ```
+      Again, define the shape first, then stroke out the outline of the define
+      shape.
+
+- When should you `ctx.beginPath()`?  
+   `ctx.beginPath()` will clear any previously defined path. If you are
+  drawing multiple shapes, call this before each shape to ensure that they
+  are drawn as separate entities.
+  ```
+  ctx.beginPath();
+  // Define shape here
+  ctx.stroke();
+  ctx.beginPath();
+  // Define second shape here
+  ctx.stroke();
+  ```
+  When you want to change your pen, you need to `ctx.beginPath()` after you
+  change the marker.
