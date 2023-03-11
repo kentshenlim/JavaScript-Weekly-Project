@@ -8,6 +8,9 @@
 
    - This allows you to define reusable var in SCSS.
    - `$orange: #ffa600` is equivalent to CSS `* {--ORANGE: #ffa600}`
+   - As an aside, to define global variables in plain CSS, you should have
+     defined it under the root element instead; the variables defined will be
+     inheritable by default: `:root {--ORANGE: #ffa600}`
    - To use it, simply `color: $orange`, equivalent to CSS `color: var(--ORANGE)`
 
 2. SCSS syntax: `@mixin` and `@include`
@@ -17,9 +20,10 @@
    - "Mixins allow you to define styles that can be re-used throughout your
      stylesheet".
    - This is especially useful when there is a number of similar properties with
-     different prefixes like -webkit or -moz (due to different engines) that you
-     need to define, and reused over and over again throughout the stylesheet.
-   - You can even set up mixin taking in arg:
+     different prefixes like -webkit or -moz (due to different browser engines)
+     that you need to define, and reused over and over again throughout the
+     stylesheet.
+   - You can even set up mixin taking in arg for customizable values:
      `@mixin corners ($radius) {}`
      Note the arg always starts with dollar sign to let know that it is a
      placeholder.
@@ -29,8 +33,8 @@
    - Example:
      `@mixin box-shadow($x, $y, $blur, $color) {box-shadow: $x $y $blur $color}`
      The mixin declaration can set more than one property, here, not just
-     box-shadow. This is very useful when you sure those properties will often
-     occur together.
+     box-shadow. This is very useful when you are certain those properties will
+     often occur together.
      Then in the declaration for the element you want to style it use the
      `@include` keyword:
      `.my-element {@include box-shadow(2px, 2px, 5px, #888)}`
@@ -38,12 +42,38 @@
 3. SCSS syntax: `&`
 
    - "Used in nested selectors to refer to the outer selector", e.g. `&:hover`
+   - More precisely, `&` is just a reference to the parent selector. This is
+     needed only when you are using pseudo-class selectors. See SCSS nesting
+     next.
    - Example
      `.button {background-color: blue; &:hover {background-color: green;}}`
    - This saves you from the need to write out `.button:hover{}` declaration
      separately from the `.button{}`.
+   - Don't simply add space, e.g. `& :hover` will mean `parent :hover`, which
+     means the descendants of the elements selected by parent, but not the
+     parent elements themselves.
 
-4. General good practice
+4. SCSS nesting
+
+- Say you have `.container`, and there is `h1` and `div` in it. In SCSS, to
+  style them, you can just:
+  ```
+  .container {
+    h1 {
+      color: red;
+    }
+    div {
+      color: blue;
+    }
+  }
+  ```
+  Note how the selectors are nested within another selector. You do not need
+  to repeat `.container` multiple times.
+- For "normal" selectors like this, no `&` is needed. For pseudo-class, not
+  the case, because pseudo-class selector must be attached to a selector to be
+  valid CSS.
+
+5. General good practice
 
    - Include specification on all similar properties for accessibility of all
      browser engines, e.g.
@@ -64,7 +94,7 @@
 
    - Without using flexbox
    - Use absolute position, then that item will be referenced WRT its parent:
-     `{position: absolute; top: 50%; left: 50%; transform: translateX(-50%) translateY(-50%)}`
+     `{position: absolute; top: 50%; left: 50%; transform: translateX(-50%) translateY(-50%)};`
      which means you might need to change the parent to non-static position like
      `{position: relative}`
    - When you `top: 50%; left: 50%;`, you move the upper left corner of your
@@ -76,7 +106,7 @@
      Note the % here are WRT moving element.
    - In CSS, the positive x-direction is towards horizontal right; the positive
      y-direction is towards vertical downward, rather counter-intuitively. You
-     want to move upward not downward, so translateY(-50%).
+     want to move upward not downward, so `translateY(-50%)`.
    - Complexity because the "reference point/ pivot" of an element is not always
      its center.
 
@@ -100,6 +130,7 @@
 
    - Use the :active pseudo-class
    - `button:active {font-weight: bold;}`
+   - This works for other elements too, like `h1` which is not deemed clickable
 
 4. Strategy: vertical centering of text in an element
    - Just use `padding-top`
@@ -148,7 +179,8 @@
    - Because of this, you need to make the container to be statically-sized,
      else when the window is resized everything will be out of position.
    - Then for tilting, take `transform: rotate() scale()` and set the
-     appropriate `transition` as well of course.
+     appropriate `transition` as well of course. In JS remember to add event
+     listener to listen for `transitionend` event, to tilt back the image.
 
 4. Strategy: panel not too small, else overflow
 
@@ -168,20 +200,24 @@
 
    - `display: none;`: This removes the element from the layout, which means
      layout shift might happen if you have already written in the element in
-     your html and style the layout. **Cannot** interact with JS because not
-     rendered.
+     your html and style the layout. **Can** interact with JS.
    - `visibility: hidden;`: This **does not** remove the element from the
      layout so layout shift will not happen. **Can** interact with JS. Pointer
      events like hover **will not** happen because hidden.
    - `opacity: none;`: This **does not** remove the element from the layout.
      **Can** interact with JS. Pointer events **can** happen.
-   - So there are three distinguishing criteria: layout shift, JS interaction
-     and pointer events.
+   - So there are two distinguishing criteria: layout shift and pointer events.
    - Based on above then, what is the point of having `display: none`
      element? One feature that uses this is to hide elements on different screen
      sizes, allowing you to create responsive designs that adapt to different
      devices. You don't want layout change, no JS interaction and no pointer
      event.
+   - If an element has `display: none`, it can still interact with JS because
+     it is present in the DOM (but if you use JS to change its visual
+     appearance, remember to change the `display: none` for you to observe the
+     change). However, if an element's parent has `display: none`, you won't
+     see the children of the parent in DOM, which means you will not be able to
+     use JS to interact with the children of an element with `display: none;`.
 
 2. CSS property: `text-transform: uppercase;`
 
@@ -253,14 +289,14 @@
 
 5. Double underline
 
-   - `.uu {text-decoration: underline double}`
+   - `.uu {text-decoration: underline double}`  
      With the extra `double` value
 
 6. `canvas` html element
 
    - "An html element that provides a way to create and manipulate graphics and
      animations on a webpage using JS. It allows you to draw shapes, lines,
-     images, text and more programmatically."
+     images, and text more programmatically."
    - "Provides a bitmap canvas that can be manipulated with JS."
    - "Has a width and height att that specifies the size of the canvas in
      pixels. Once the canvas is created, you can use JS to draw graphics on it
