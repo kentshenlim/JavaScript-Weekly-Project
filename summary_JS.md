@@ -278,6 +278,7 @@
 
     - Draw straight line
       You can define this kind of function:
+
       ```
       drawStraightLine(fromX, fromY, toX, toY) {
         ctx.moveTo(fromX, fromY);
@@ -285,20 +286,21 @@
         ctx.stroke();
       }
       ```
+
       Again, define the shape first, then stroke out the outline of the define
       shape.
 
-- When should you `ctx.beginPath()`?  
-   `ctx.beginPath()` will clear any previously defined path. If you are
-  drawing multiple shapes, call this before each shape to ensure that they
-  are drawn as separate entities.
-  ```
-  ctx.beginPath();
-  // Define shape here
-  ctx.stroke();
-  ctx.beginPath();
-  // Define second shape here
-  ctx.stroke();
-  ```
-  When you want to change your pen, you need to `ctx.beginPath()` after you
-  change the marker.
+    - When should you `ctx.beginPath()`?  
+      `ctx.beginPath()` will clear any previously defined path. If you are
+      drawing multiple shapes, call this before each shape to ensure that they
+      are drawn as separate entities.
+      ```
+      ctx.beginPath();
+      // Define shape here
+      ctx.stroke();
+      ctx.beginPath();
+      // Define second shape here
+      ctx.stroke();
+      ```
+      When you want to change your pen, you need to `ctx.beginPath()` after you
+      change the marker.
